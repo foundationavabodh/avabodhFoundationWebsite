@@ -1,0 +1,14 @@
+{
+  "name": "kindi-node",
+  "version": "1.0.0",
+  "description": "Kindi HTML template served via Node/Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^4.22.2"
+  }
+}
