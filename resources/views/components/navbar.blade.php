@@ -1,3 +1,11 @@
+        @php
+            $settings = \App\Models\WebsiteSetting::current();
+            $logoUrl = $settings->logo
+                ? \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo)
+                : asset('assets/img/logo/black-logo.svg');
+            $logoAlt = $settings->site_name ?: 'logo-img';
+        @endphp
+
         <!-- Offcanvas Area Start -->
         <div class="fix-area">
             <div class="offcanvas__info">
@@ -6,7 +14,7 @@
                         <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                             <div class="offcanvas__logo">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('assets/img/logo/black-logo.svg') }}" alt="logo-img">
+                                    <img src="{{ $logoUrl }}" alt="{{ $logoAlt }}">
                                 </a>
                             </div>
                             <div class="offcanvas__close">
@@ -76,7 +84,7 @@
                         <div class="header-left">
                             <div class="logo">
                             <a href="{{ route('home') }}" class="header-logo">
-                                <img src="{{ asset('assets/img/logo/black-logo.svg') }}" alt="logo-img">
+                                <img src="{{ $logoUrl }}" alt="{{ $logoAlt }}">
                             </a>
                         </div>
                         </div>

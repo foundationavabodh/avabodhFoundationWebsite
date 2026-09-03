@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+       @php
+           // Fetched once per request (see App\Models\WebsiteSetting::current()'s own
+           // in-request memoization) and reused wherever this layout needs branding --
+           // the header/navbar components each also call current() independently below,
+           // at no extra query/cache cost.
+           $websiteSettings = \App\Models\WebsiteSetting::current();
+       @endphp
        <!-- ========== Meta Tags ========== -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +15,7 @@
         <meta name="author" content="Pixel-plus">
         <meta name="description" content="Kindi - Non Profit Charity HTML Template">
         <!-- ======== Page title ============ -->
-        <title>Kindi - Non Profit Charity HTML Template</title>
+        <title>{{ $websiteSettings->site_name ?: 'Kindi - Non Profit Charity HTML Template' }}</title>
         <!--<< Favcion >>-->
         <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
         <!--<< Bootstrap min.css >>-->
@@ -204,7 +211,7 @@
                                 </div>
                                 <div class="footer-newsletter">
                                     <p>
-                                        Charity not only helps to reduce suffering but also fosters a sense of unity and shared responsibility in society.
+                                        {{ $websiteSettings->footer_description ?: 'Charity not only helps to reduce suffering but also fosters a sense of unity and shared responsibility in society.' }}
                                     </p>
                                     <form action="#">
                                         <div class="form-clt">
@@ -215,10 +222,10 @@
                                         </div>
                                     </form>
                                     <div class="social-icon">
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                        <a href="{{ $websiteSettings->social_twitter_url ?: '#' }}"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="{{ $websiteSettings->social_whatsapp_url ?: '#' }}"><i class="fa-brands fa-whatsapp"></i></a>
+                                        <a href="{{ $websiteSettings->social_instagram_url ?: '#' }}"><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="{{ $websiteSettings->social_youtube_url ?: '#' }}"><i class="fa-brands fa-youtube"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +234,13 @@
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-wrapper">
-                        <p>Copyright & Design By <span>@Kindi</span></p>
+                        <p>
+                            @if ($websiteSettings->copyright_text)
+                                {{ $websiteSettings->copyright_text }}
+                            @else
+                                Copyright & Design By <span>@Kindi</span>
+                            @endif
+                        </p>
                         <ul class="footer-bottom-list">
                             <li>
                                 <a href="faq.html">Faq</a>
