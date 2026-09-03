@@ -2,12 +2,14 @@
 
 namespace App\Enums;
 
-enum ProjectStatus: string
+use Filament\Support\Contracts\HasLabel;
+
+enum ProjectStatus: string implements HasLabel
 {
     case Draft = 'draft';
     case Published = 'published';
 
-    public function label(): string
+    public function getLabel(): string
     {
         return match ($this) {
             self::Draft => 'Draft',
