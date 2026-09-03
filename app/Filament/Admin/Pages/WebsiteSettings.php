@@ -49,7 +49,6 @@ class WebsiteSettings extends Page
                             ->image()
                             ->disk('public')
                             ->directory('website/branding')
-                            ->imageEditor()
                             ->helperText('If left empty, the site keeps using its current default logo.'),
                     ]),
 

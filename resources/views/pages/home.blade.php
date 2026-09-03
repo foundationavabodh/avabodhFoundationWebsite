@@ -5,10 +5,10 @@
          <section class="hero-section-1">
             <div class="arrow-button">
                 <button class="array-prev">
-                    <i class="fa-light fa-chevron-left"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
                 </button>
                 <button class="array-next">
-                    <i class="fa-light fa-chevron-right"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
                 </button>
             </div>
             <div class="swiper hero-slider">

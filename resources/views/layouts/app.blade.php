@@ -81,7 +81,7 @@
 
         <!-- Back To Top Start -->
         <button id="back-top" class="back-to-top show">
-            <i class="fa-regular fa-arrow-up"></i>
+            <i class="fa-solid fa-arrow-up"></i>
         </button>
 
         <!-- MouseCursor Start -->
@@ -107,31 +107,31 @@
                                 <ul class="list-area">
                                     <li>
                                         <a href="about.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             About US
                                         </a>
                                     </li>
                                     <li>
                                         <a href="contact.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                            Contact
                                         </a>
                                     </li>
                                     <li>
                                         <a href="contact.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Gallery
                                         </a>
                                     </li>
                                     <li>
                                         <a href="faq.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             FAQ
                                         </a>
                                     </li>
                                     <li>
                                         <a href="news-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Blog
                                         </a>
                                     </li>
@@ -146,25 +146,25 @@
                                 <ul class="list-area">
                                     <li>
                                         <a href="volounteer-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Volunteers
                                         </a>
                                     </li>
                                     <li>
                                         <a href="project-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                            Project
                                         </a>
                                     </li>
                                     <li>
                                         <a href="event-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Event
                                         </a>
                                     </li>
                                     <li>
                                         <a href="project-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Causes
                                         </a>
                                     </li>
@@ -179,25 +179,25 @@
                                 <ul class="list-area">
                                     <li>
                                         <a href="donation-details.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Domination
                                         </a>
                                     </li>
                                     <li>
                                         <a href="news.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                            Forums
                                         </a>
                                     </li>
                                     <li>
                                         <a href="faq.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Faq
                                         </a>
                                     </li>
                                     <li>
                                         <a href="contact.html">
-                                            <i class="fa-solid fa-chevrons-right"></i>
+                                            <i class="fa-solid fa-angles-right"></i>
                                             Support Policy
                                         </a>
                                     </li>

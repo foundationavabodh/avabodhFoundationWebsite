@@ -19,7 +19,7 @@
                             </div>
                             <div class="offcanvas__close">
                                 <button>
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-xmark"></i>
                                 </button>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <ul class="d-xl-block">
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon">
-                                        <i class="fal fa-map-marker-alt"></i>
+                                        <i class="fas fa-location-dot"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
                                         <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
@@ -40,7 +40,7 @@
                                 </li>
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
-                                        <i class="fal fa-envelope"></i>
+                                        <i class="far fa-envelope"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
                                         <a href="mailto:info@example.com"><span class="mailto:info@example.com">info@example.com</span></a>
@@ -48,7 +48,7 @@
                                 </li>
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
-                                        <i class="fal fa-clock"></i>
+                                        <i class="far fa-clock"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
                                         <a target="_blank" href="#">Mod-friday, 09am -05pm</a>
@@ -56,7 +56,7 @@
                                 </li>
                                 <li class="d-flex align-items-center">
                                     <div class="offcanvas__contact-icon mr-15">
-                                        <i class="far fa-phone"></i>
+                                        <i class="fas fa-phone"></i>
                                     </div>
                                     <div class="offcanvas__contact-text">
                                         <a href="tel:+11002345909">+11002345909</a>
@@ -172,7 +172,7 @@
                             </div> 
                           <div class="header-right d-flex justify-content-end align-items-center">
                             <a href="#" class="main-header__search search-toggler">
-                                <i class="fa-regular fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                             <div class="header-button">
                                 <a href="donation-details.html" class="theme-btn">
@@ -197,7 +197,7 @@
                 <form role="search" method="get" class="search-popup__form" action="#">
                     <input type="text" id="search" name="search" placeholder="Search Here...">
                     <button type="submit" aria-label="search submit" class="search-btn">
-                        <span><i class="fa-regular fa-magnifying-glass"></i></span>
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
                     </button>
                 </form>
             </div>

@@ -18,7 +18,7 @@
                 <div class="header-top-wrapper">
                     <div class="icon-items">
                         <div class="icon">
-                            <i class="fa-regular fa-location-dot"></i>
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <div class="content">
                             <span>Locate Address</span>
