@@ -4,6 +4,24 @@
                 ? \Illuminate\Support\Facades\Storage::disk('public')->url($settings->logo)
                 : asset('assets/img/logo/black-logo.svg');
             $logoAlt = $settings->site_name ?: 'logo-img';
+
+            // Database-driven main navigation (see Filament's Navigation manager at
+            // /admin/navigation and App\Models\MenuItem::tree()). Only active top-level
+            // items are included, each with its active submenu items (one level) eager
+            // loaded; the same tree drives both the desktop dropdown menu below and the
+            // mobile offcanvas menu, since meanmenu.js builds the mobile menu straight
+            // from this same <nav id="mobile-menu"> markup at runtime.
+            $menuTree = \App\Models\MenuItem::tree();
+
+            // A menu item is highlighted as the current page only when it's a named
+            // route we can reliably match against the current request (path/external
+            // links -- mostly legacy placeholders migrated as-is -- are left unmarked
+            // rather than guessed at).
+            $isMenuItemActive = function (\App\Models\MenuItem $item): bool {
+                return $item->link_type === \App\Enums\MenuLinkType::Route
+                    && $item->route_name
+                    && request()->routeIs($item->route_name);
+            };
         @endphp
 
         <!-- Offcanvas Area Start -->
@@ -75,7 +93,7 @@
             </div>
         </div>
         <div class="offcanvas__overlay"></div>
-       
+
         <!-- Header Section Start -->
         <header id="header-sticky" class="header-1">
             <div class="container-fluid">
@@ -92,84 +110,26 @@
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
                                         <ul>
-                                            <li class="active">
-                                                <a href="{{ route('home') }}">
-                                                    Home
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="about.html">About Us</a>
-                                            </li>
-                                            <li class="has-dropdown">
-                                                <a href="news-details.html">
-                                                    Pages
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li class="has-dropdown">
-                                                        <a href="project-details.html">
-                                                            Cause
-                                                            <i class="fas fa-angle-right"></i>
-                                                        </a>
+                                            @foreach ($menuTree as $item)
+                                                <li class="{{ $item->children->isNotEmpty() ? 'has-dropdown' : '' }}{{ $isMenuItemActive($item) ? ' active' : '' }}">
+                                                    <a href="{{ $item->resolved_url }}"@if ($item->open_in_new_tab) target="_blank" rel="noopener"@endif>
+                                                        {{ $item->label }}
+                                                    </a>
+                                                    @if ($item->children->isNotEmpty())
                                                         <ul class="submenu">
-                                                            <li><a href="project.html">Our Cause</a></li>
-                                                            <li><a href="project-details.html">Cause Details</a></li>
+                                                            @foreach ($item->children as $child)
+                                                                <li>
+                                                                    <a href="{{ $child->resolved_url }}"@if ($child->open_in_new_tab) target="_blank" rel="noopener"@endif>{{ $child->label }}</a>
+                                                                </li>
+                                                            @endforeach
                                                         </ul>
-                                                    </li>
-                                                     <li class="has-dropdown">
-                                                        <a href="volounteer-details.html">
-                                                            volounteer
-                                                            <i class="fas fa-angle-right"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="become-volounteer.html">Become Volounteer</a></li>
-                                                            <li><a href="volounteer.html">Volounteer</a></li>
-                                                            <li><a href="volounteer-details.html">Volounteer Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                     <li class="has-dropdown">
-                                                        <a href="event-details.html">
-                                                            Event
-                                                            <i class="fas fa-angle-right"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="event.html"> Our Event</a></li>
-                                                            <li><a href="event-list.html">Event List</a></li>
-                                                            <li><a href="event-details.html">Event Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                     <li class="has-dropdown">
-                                                        <a href="donation-details.html">
-                                                            Donation
-                                                            <i class="fas fa-angle-right"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="donation.html"> Our Donation</a></li>
-                                                            <li><a href="donation-now.html">Donation Now</a></li>
-                                                            <li><a href="donation-details.html">Donation Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="pricing.html">Our Pricing</a></li>
-                                                    <li><a href="faq.html">Our Faq</a></li>
-                                                    <li><a href="404.html">404 Page</a></li>
-                                                </ul>
-                                            </li>
-                                           <li>
-                                                <a href="news-details.html">
-                                                    Blog
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="news-grid.html">Blog Grid</a></li>
-                                                    <li><a href="news.html">Blog Standard</a></li>
-                                                    <li><a href="news-details.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="contact.html">Contact Us</a>
-                                            </li>
+                                                    @endif
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </nav>
                                 </div>
-                            </div> 
+                            </div>
                           <div class="header-right d-flex justify-content-end align-items-center">
                             <a href="#" class="main-header__search search-toggler">
                                 <i class="fa-solid fa-magnifying-glass"></i>
