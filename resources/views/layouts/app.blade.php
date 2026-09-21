@@ -13,9 +13,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Pixel-plus">
-        <meta name="description" content="Kindi - Non Profit Charity HTML Template">
+        <meta name="description" content="Avbodh Foundation">
         <!-- ======== Page title ============ -->
-        <title>{{ $websiteSettings->site_name ?: 'Kindi - Non Profit Charity HTML Template' }}</title>
+        <title>{{ $websiteSettings->site_name ?: 'Avbodh Foundation' }}</title>
         <!--<< Favcion >>-->
         <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
         <!--<< Bootstrap min.css >>-->
@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
         <!--<< Main.css >>-->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        @stack('styles')
 </head>
 <body>
 
@@ -88,7 +89,7 @@
         <div class="mouseCursor cursor-outer"></div>
         <div class="mouseCursor cursor-inner"></div>
 
-        <x-header/>
+        <x-header :variant="$headerVariant ?? 'home'"/>
 
         <x-navbar/>
 
@@ -238,7 +239,7 @@
                             @if ($websiteSettings->copyright_text)
                                 {{ $websiteSettings->copyright_text }}
                             @else
-                                Copyright & Design By <span>@Kindi</span>
+                                Copyright © 2026 <span>Avbodh Foundation</span>. All rights reserved.
                             @endif
                         </p>
                         <ul class="footer-bottom-list">
