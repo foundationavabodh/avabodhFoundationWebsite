@@ -138,7 +138,7 @@
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-wrapper">
-                        <p>Copyright & Design By <span>@Kindi</span></p>
+                        <p>Copyright © 2026 <span>Avbodh Foundation</span>. All rights reserved.</p>
                         <ul class="footer-bottom-list">
                             <li>
                                 <a href="faq.html">Faq</a>

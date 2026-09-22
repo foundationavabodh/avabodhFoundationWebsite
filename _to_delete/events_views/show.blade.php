@@ -3,12 +3,12 @@
 
 @section('content')
 
-    {{-- Hero / Breadcrumb Section Start (reused from public/project-details.html) --}}
+    {{-- Hero / Breadcrumb Section Start (reused pattern from pages/projects/show.blade.php) --}}
     <div class="breadcrumb-wrapper fix bg-cover" style="background-image: url({{ asset('assets/img/inner-page/breadcrumb.png') }});">
         <div class="container">
             <div class="page-heading">
                 <div class="breadcrumb-sub-title">
-                    <h1 class="wow fadeInUp" data-wow-delay=".3s">{{ $project->title }}</h1>
+                    <h1 class="wow fadeInUp" data-wow-delay=".3s">{{ $event->title }}</h1>
                 </div>
                 <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
                     <li>
@@ -20,15 +20,15 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </li>
                     <li>
-                        <a href="{{ route('projects.index') }}">
-                            Our Causes
+                        <a href="{{ route('events.index') }}">
+                            Events
                         </a>
                     </li>
                     <li>
                         <i class="fa-solid fa-chevron-right"></i>
                     </li>
                     <li>
-                        {{ $project->title }}
+                        {{ $event->title }}
                     </li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@
     </div>
     {{-- Hero / Breadcrumb Section End --}}
 
-    {{-- Project-Details Section Start (reused from public/project-details.html) --}}
+    {{-- Event-Details Section Start (adapted from pages/projects/show.blade.php) --}}
     <section class="causes-details-section section-padding fix">
         <div class="container">
             <div class="causes-details-wrapper">
@@ -44,37 +44,46 @@
                     <div class="col-lg-7">
                         <div class="causes-details-post">
                             <div class="details-image">
-                                @if ($project->image)
-                                    <img src="{{ Storage::disk('public')->url($project->image) }}" alt="{{ $project->title }}">
+                                @if ($event->image)
+                                    <img src="{{ Storage::disk('public')->url($event->image) }}" alt="{{ $event->title }}">
                                 @else
-                                    <img src="{{ asset('assets/img/home-1/donation/01.jpg') }}" alt="{{ $project->title }}">
+                                    <img src="{{ asset('assets/img/home-1/news/01.jpg') }}" alt="{{ $event->title }}">
                                 @endif
                             </div>
                             <div class="details-content">
-                                @if ($project->start_date || $project->end_date)
+                                @if ($event->event_date || $event->start_time || $event->location)
                                     <ul class="cause-list">
-                                        @if ($project->start_date)
+                                        @if ($event->event_date)
                                             <li>
                                                 <i class="fa-regular fa-calendar"></i>
-                                                Starts {{ $project->start_date->format('d M Y') }}
+                                                {{ $event->event_date->format('d M Y') }}
                                             </li>
                                         @endif
-                                        @if ($project->end_date)
+                                        @if ($event->start_time)
                                             <li>
-                                                <i class="fa-regular fa-calendar"></i>
-                                                Ends {{ $project->end_date->format('d M Y') }}
+                                                <i class="fa-regular fa-clock"></i>
+                                                {{ \Illuminate\Support\Carbon::parse($event->start_time)->format('g:i A') }}
+                                                @if ($event->end_time)
+                                                    &ndash; {{ \Illuminate\Support\Carbon::parse($event->end_time)->format('g:i A') }}
+                                                @endif
+                                            </li>
+                                        @endif
+                                        @if ($event->location)
+                                            <li>
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                {{ $event->location }}
                                             </li>
                                         @endif
                                     </ul>
                                 @endif
 
                                 <h2>
-                                    {{ $project->title }}
+                                    {{ $event->title }}
                                 </h2>
 
-                                @if ($project->description)
+                                @if ($event->description)
                                     <div class="cause-description">
-                                        {!! $project->description !!}
+                                        {!! $event->description !!}
                                     </div>
                                 @endif
                             </div>
@@ -84,24 +93,27 @@
                     <div class="col-lg-5">
                         <div class="causes-details-sideber">
                             <div class="causes-details-sideber-box">
-                                <h4>Project Info</h4>
+                                <h4>Event Info</h4>
                                 <ul class="donation-list">
-                                    <li>
-                                        Status <span>{{ $project->status->getLabel() }}</span>
-                                    </li>
-                                    @if ($project->start_date)
+                                    @if ($event->event_date)
                                         <li>
-                                            Start Date <span>{{ $project->start_date->format('d M Y') }}</span>
+                                            Date <span>{{ $event->event_date->format('d M Y') }}</span>
                                         </li>
                                     @endif
-                                    @if ($project->end_date)
+                                    @if ($event->start_time)
                                         <li>
-                                            End Date <span>{{ $project->end_date->format('d M Y') }}</span>
+                                            Time
+                                            <span>
+                                                {{ \Illuminate\Support\Carbon::parse($event->start_time)->format('g:i A') }}
+                                                @if ($event->end_time)
+                                                    &ndash; {{ \Illuminate\Support\Carbon::parse($event->end_time)->format('g:i A') }}
+                                                @endif
+                                            </span>
                                         </li>
                                     @endif
-                                    @if (! is_null($project->goal_amount))
+                                    @if ($event->location)
                                         <li>
-                                            Goal Amount <span>${{ number_format((float) $project->goal_amount, 2) }}</span>
+                                            Location <span>{{ $event->location }}</span>
                                         </li>
                                     @endif
                                 </ul>
@@ -112,11 +124,11 @@
                                     <div class="shape">
                                         <img src="{{ asset('assets/img/inner-page/project-details/shape.png') }}" alt="">
                                     </div>
-                                    <h6>Small Donations Bigger Impact</h6>
+                                    <h6>Be Part Of The Change</h6>
                                     <h2>
-                                        Help Us Reach Our Goal
+                                        Join Us At This Event
                                     </h2>
-                                    <a href="{{ route('projects.index') }}" class="theme-btn border-btn">Back To Causes <i class="fa-solid fa-arrow-right-long"></i></a>
+                                    <a href="{{ route('events.index') }}" class="theme-btn border-btn">Back To Events <i class="fa-solid fa-arrow-right-long"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -125,6 +137,6 @@
             </div>
         </div>
     </section>
-    {{-- Project-Details Section End --}}
+    {{-- Event-Details Section End --}}
 
 @endsection

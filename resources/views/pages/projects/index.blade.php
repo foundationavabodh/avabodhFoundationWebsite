@@ -4,7 +4,7 @@
 @section('content')
 
     {{-- Hero / Breadcrumb Section Start (reused from public/project.html) --}}
-    <div class="breadcrumb-wrapper fix bg-cover" style="background-image: url(https://ex-coders.com/html/kindi/assets/img/inner-page/breadcrumb.png);">
+    <div class="breadcrumb-wrapper fix bg-cover" style="background-image: url({{ asset('assets/img/inner-page/breadcrumb.png') }});">
         <div class="container">
             <div class="page-heading">
                 <div class="breadcrumb-sub-title">
