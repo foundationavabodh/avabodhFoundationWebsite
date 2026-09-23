@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 
 class MenuItemForm
 {
+    /**
+     * Normalizes the live 'link_type' form state to its plain string value.
+     *
+     * Get::get('link_type') returns a MenuLinkType enum *instance* once the form
+     * has been hydrated by Livewire (confirmed by direct inspection -- a debug
+     * probe placed in this schema printed `\App\Enums\MenuLinkType::Route`, not
+     * the string "route"), even though the field is fed by MenuLinkType::class
+     * options and the record's own attributesToArray() gives a plain string on
+     * the very first server-side fill. The various ->visible()/->label()/etc.
+     * closures below were comparing that against MenuLinkType::X->value (a
+     * string), which is a type mismatch that always evaluates false -- so the
+     * Route/Path/External "destination" field never appeared, on both the
+     * create and edit forms. Routing every comparison through this helper
+     * instead of a bare ->value comparison keeps it correct regardless of
+     * which shape Get() hands back.
+     */
+    private static function linkTypeValue(mixed $value): ?string
+    {
+        return $value instanceof MenuLinkType ? $value->value : $value;
+    }
+
     public static function configure(Schema $schema): Schema
     {
         return $schema
@@ -50,27 +71,35 @@ class MenuItemForm
                     ->native(false)
                     ->searchable()
                     ->options(function () {
+                        // Illuminate\Routing\Route has no 'name' *property* (only a
+                        // getName() *method*), so a plain ->pluck('name', 'name') on a
+                        // collection of Route objects can't read it -- every route
+                        // silently resolves to null, and the nulls collapse into a
+                        // single blank option. Map to the actual route name first.
                         return collect(RouteFacade::getRoutes())
                             ->filter(fn ($route) => $route->getName()
                                 && in_array('GET', $route->methods())
                                 && ! str($route->getName())->startsWith(['filament.', 'filament-', 'livewire.', 'livewire-'])
                                 && $route->parameterNames() === [])
-                            ->pluck('name', 'name')
+                            ->map(fn ($route) => $route->getName())
+                            ->unique()
                             ->sort()
+                            ->values()
+                            ->mapWithKeys(fn (string $name) => [$name => $name])
                             ->all();
                     })
                     ->required()
-                    ->visible(fn (Get $get) => $get('link_type') === MenuLinkType::Route->value)
+                    ->visible(fn (Get $get) => self::linkTypeValue($get('link_type')) === MenuLinkType::Route->value)
                     ->helperText('A named application route, e.g. "projects.index". The link automatically follows that route\'s URL.'),
 
                 TextInput::make('url')
-                    ->label(fn (Get $get) => $get('link_type') === MenuLinkType::External->value ? 'External URL' : 'Path')
+                    ->label(fn (Get $get) => self::linkTypeValue($get('link_type')) === MenuLinkType::External->value ? 'External URL' : 'Path')
                     ->required()
                     ->maxLength(255)
-                    ->url(fn (Get $get) => $get('link_type') === MenuLinkType::External->value)
-                    ->placeholder(fn (Get $get) => $get('link_type') === MenuLinkType::External->value ? 'https://example.com' : '/about')
-                    ->visible(fn (Get $get) => in_array($get('link_type'), [MenuLinkType::Path->value, MenuLinkType::External->value]))
-                    ->helperText(fn (Get $get) => $get('link_type') === MenuLinkType::External->value
+                    ->url(fn (Get $get) => self::linkTypeValue($get('link_type')) === MenuLinkType::External->value)
+                    ->placeholder(fn (Get $get) => self::linkTypeValue($get('link_type')) === MenuLinkType::External->value ? 'https://example.com' : '/about')
+                    ->visible(fn (Get $get) => in_array(self::linkTypeValue($get('link_type')), [MenuLinkType::Path->value, MenuLinkType::External->value]))
+                    ->helperText(fn (Get $get) => self::linkTypeValue($get('link_type')) === MenuLinkType::External->value
                         ? 'The full external URL this item links to.'
                         : 'The internal path or page this item links to, e.g. "/about".'),
 

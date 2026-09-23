@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Pixel-plus">
+        <meta name="author" content="Avabodh Foundation">
         <meta name="description" content="Avbodh Foundation">
         {{-- Used by the internship application form's email-verification AJAX calls
              (resources/views/pages/internships/index.blade.php) to send Laravel's
@@ -48,20 +48,26 @@
                 <div class="spinner">
                 </div>
                 <div class="txt-loading">
-                    <span data-text-preloader="K" class="letters-loading">
-                        K
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
                     </span>
-                     <span data-text-preloader="I" class="letters-loading">
-                        I
+                     <span data-text-preloader="V" class="letters-loading">
+                        V
                     </span>
-                     <span data-text-preloader="N" class="letters-loading">
-                        N
+                     <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="B" class="letters-loading">
+                        B
+                    </span>
+                    <span data-text-preloader="O" class="letters-loading">
+                        O
                     </span>
                     <span data-text-preloader="D" class="letters-loading">
                         D
                     </span>
-                    <span data-text-preloader="I" class="letters-loading">
-                        I
+                    <span data-text-preloader="H" class="letters-loading">
+                        H
                     </span>
                 </div>
                 <p class="text-center">Loading</p>

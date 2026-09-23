@@ -40,17 +40,17 @@ Version: 1.0.0
 
 --------------------------------------------------------------
 */
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&amp;display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   --body: #fff;
   --black: #000;
   --white: #fff;
-  --theme: #FFC107;
-  --theme-2: #0B4E3D;
+  --theme: #E8A33D;
+  --theme-2: #0F5C5C;
   --header: #122F2A;
   --text: #667471;
-  --text-2: #0B4E3D;
+  --text-2: #0F5C5C;
   --border: #C9C9C9;
   --bg: #F8F3E7;
   --bg-2: #122F2A;
@@ -75,7 +75,7 @@ Version: 1.0.0
   overflow: hidden;
   border-radius: 100px;
   z-index: 1;
-  font-family: Nunito;
+  font-family: Roboto;
 }
 .theme-btn i {
   margin-left: 8px;
@@ -113,7 +113,7 @@ Version: 1.0.0
   font-size: 16px;
   color: var(--theme-2);
   text-transform: capitalize;
-  font-family: DM Serif Tex;
+  font-family: Playfair Display;
 }
 .link-btn i {
   margin-left: 8px;
@@ -131,7 +131,7 @@ Version: 1.0.0
     Template Default Fonts & Fonts Styles
  ---------------------------------------------- */
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
@@ -170,7 +170,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   margin: 0px;
   padding: 0;
   color: var(--header);
@@ -1613,7 +1613,7 @@ span {
 }
 .contact-wrapper .contact-content .contact-item h6 span {
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .contact-wrapper:hover .contact-image::after {
   height: 250%;
@@ -2296,7 +2296,7 @@ span {
 .donation-wrapper .donation-card-item .donation-content .donate-list li {
   font-size: 14px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .donation-wrapper .donation-card-item .donation-content .donate-list li span {
   color: var(--header);
@@ -2497,7 +2497,7 @@ span {
 .donation-wrapper-2 .donation-card-item-2 .donation-content .donate-list li {
   font-size: 16px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .donation-wrapper-2 .donation-card-item-2 .donation-content .donate-list li span {
   color: var(--header);
@@ -2816,7 +2816,7 @@ span {
   align-items: center;
   font-size: 20px;
   font-weight: bold;
-  color: #0B4E3D;
+  color: var(--theme-2);
   margin-bottom: 15px;
   width: 630px;
   margin-top: 20px;
@@ -2839,7 +2839,7 @@ span {
 .donation-details-wrapper .donation-details-left .donation-display span {
   font-size: 24px;
   color: var(--theme-2);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
 }
 @media (max-width: 1399px) {
@@ -2880,7 +2880,7 @@ span {
   font-weight: 400;
   cursor: pointer;
   transition: 0.3s;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 @media (max-width: 1399px) {
   .donation-details-wrapper .donation-details-left .donation-btn,
@@ -2972,7 +2972,7 @@ span {
   transition: all 0.4s ease-in-out;
   color: var(--text);
   font-size: 16px;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   border-radius: 10px;
 }
 .donation-details-wrapper .donation-details-left .form-clt input::placeholder, .donation-details-wrapper .donation-details-left .form-clt textarea::placeholder {
@@ -3020,7 +3020,7 @@ span {
 }
 .donation-details-wrapper .donation-details-sideber .donation-details-sideber-box .donation-list li {
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4399,7 +4399,7 @@ span {
   font-size: 16px;
   font-weight: 400;
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .feature-skill-content .progress-wrap .pro-items .progress {
   background: rgba(255, 255, 255, 0.2);
@@ -4740,13 +4740,13 @@ span {
 }
 .footer-bottom.style-2 .footer-wrapper p {
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .footer-bottom.style-2 .footer-wrapper p span {
   color: var(--theme);
 }
 .footer-bottom.style-2 .footer-wrapper .footer-bottom-list li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .footer-bottom.style-2 .footer-wrapper .footer-bottom-list li a {
   color: var(--white);
@@ -4842,7 +4842,7 @@ span {
 .footer-widget-wrapper-3 .top-list li {
   font-size: 24px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 @media (max-width: 1399px) {
   .footer-widget-wrapper-3 .top-list li {
@@ -4900,7 +4900,7 @@ span {
 }
 .footer-bottom-3 .footer-wrapper-3 p {
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .footer-bottom-3 .footer-wrapper-3 p span {
   color: var(--theme-2);
@@ -4916,7 +4916,7 @@ span {
   }
 }
 .footer-bottom-3 .footer-wrapper-3 .footer-bottom-list li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .footer-bottom-3 .footer-wrapper-3 .footer-bottom-list li a {
   color: var(--header);
@@ -5024,7 +5024,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .header-top-wrapper-2 .header-left .list-icon {
   display: flex;
@@ -5035,7 +5035,7 @@ span {
   font-size: 14px;
   font-weight: 400;
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .header-top-wrapper-2 .header-left .list-icon li i {
   color: var(--white);
@@ -5079,7 +5079,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .header-main .main-menu ul {
   margin-bottom: 0;
@@ -5391,6 +5391,33 @@ span {
 @media (max-width: 575px) {
   .header-1 .container-fluid {
     padding: 0 15px;
+  }
+}
+
+/* Two-tone header: white diagonal panel behind the logo, rest of the header
+   stays the theme accent color. Reuses the same diagonal clip-path/z-index
+   approach the theme already uses for its .header-1.header-2::before variant,
+   just recolored to white and given its own class so it does not trigger that
+   variant's unrelated header-logo/header-logo-2 swap rules. */
+.header-two-tone {
+  position: relative;
+  z-index: 9999;
+  background-color: var(--white);
+}
+.header-two-tone::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  content: "";
+  background-color: var(--white);
+  width: 387px;
+  clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+  z-index: -1;
+}
+@media (max-width: 1399px) {
+  .header-two-tone::before {
+    display: none;
   }
 }
 .header-1.header-2 {
@@ -5708,7 +5735,7 @@ span {
   text-transform: capitalize;
   font-weight: 400;
   font-size: 16px;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .breadcrumb-wrapper .page-heading .breadcrumb-items li a {
   color: var(--white);
@@ -6354,31 +6381,31 @@ span {
 }
 .hero-2 .hero-content h1 {
   color: var(--white);
-  font-size: 110px;
+  font-size: 64px;
 }
 @media (max-width: 1600px) {
   .hero-2 .hero-content h1 {
-    font-size: 110px;
+    font-size: 50px;
   }
 }
 @media (max-width: 1399px) {
   .hero-2 .hero-content h1 {
-    font-size: 60px;
+    font-size: 45px;
   }
 }
 @media (max-width: 1199px) {
   .hero-2 .hero-content h1 {
-    font-size: 55px;
+    font-size: 40px;
   }
 }
 @media (max-width: 991px) {
   .hero-2 .hero-content h1 {
-    font-size: 45px;
+    font-size: 36px;
   }
 }
 @media (max-width: 575px) {
   .hero-2 .hero-content h1 {
-    font-size: 35px;
+    font-size: 28px;
   }
 }
 .hero-2 .hero-content .hero-button-item {
@@ -6422,7 +6449,7 @@ span {
 .hero-2 .hero-content .hero-button-item .button-text span {
   font-size: 14px;
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
 }
 
@@ -6525,7 +6552,7 @@ span {
   font-weight: 400;
 }
 .hero-3 .box .content span {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   color: var(--header);
 }
 .hero-3 .shape-1 {
@@ -6645,7 +6672,7 @@ span {
 .hero-3 .hero-content .hero-button-item .button-text span {
   font-size: 14px;
   color: var(--white);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   font-weight: 400;
 }
 .hero-3 .hero-image {
@@ -6838,7 +6865,7 @@ span {
   margin-bottom: 20px;
 }
 .news-card-items .news-content .news-meta li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .news-card-items .news-content .news-meta li i {
   margin-right: 8px;
@@ -6923,7 +6950,7 @@ span {
   margin-bottom: 20px;
 }
 .news-card-items-2 .news-content .news-meta li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .news-card-items-2 .news-content .news-meta li i {
   margin-right: 8px;
@@ -7045,7 +7072,7 @@ span {
   margin-bottom: 20px;
 }
 .news-card-items-3 .news-content .news-meta li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .news-card-items-3 .news-content .news-meta li i {
   margin-right: 8px;
@@ -7252,7 +7279,7 @@ span {
   line-height: 1;
   padding: 20px;
   position: relative;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .main-sideber .single-sidebar-widget .news-widget-categories ul li::before {
   content: "";
@@ -7405,7 +7432,7 @@ span {
 .news-details-wrapper .news-details-post .news-details-content .news-details-list-items .list-item li {
   font-size: 20px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   color: var(--header);
 }
 @media (max-width: 575px) {
@@ -7434,7 +7461,7 @@ span {
   display: inline-block;
   margin-right: 8px;
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .news-details-wrapper .news-details-post .news-details-content .tag-share-wrap .tagcloud a {
   display: inline-block;
@@ -7551,7 +7578,7 @@ span {
   transition: all 0.4s ease-in-out;
   color: var(--text);
   font-size: 16px;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   border-radius: 10px;
 }
 .news-details-wrapper .news-details-post .news-details-content .contact-from-box .form-clt input::placeholder, .news-details-wrapper .news-details-post .news-details-content .contact-from-box .form-clt textarea::placeholder {
@@ -7594,7 +7621,7 @@ span {
   }
 }
 .preloader .animation-preloader .txt-loading {
-  font: bold 5em "DM Serif Text", serif, "Nunito", sans-serif;
+  font: bold 5em "Playfair Display", serif, "Roboto", sans-serif;
   text-align: center;
   user-select: none;
 }
@@ -7634,7 +7661,7 @@ span {
   content: attr(data-text-preloader);
   left: 0;
   opacity: 0;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   position: absolute;
   top: -3px;
   transform: rotateY(-90deg);
@@ -8076,7 +8103,7 @@ span {
   }
 }
 .pricing-wrapper .pricing-right-card .pricing-list li {
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .pricing-wrapper .pricing-right-card .pricing-list li:not(:last-child) {
   margin-bottom: 10px;
@@ -8618,7 +8645,7 @@ span {
 }
 .causes-details-wrapper .causes-details-post .details-content .cause-list li {
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .causes-details-wrapper .causes-details-post .details-content .cause-list li i {
   margin-right: 8px;
@@ -8660,7 +8687,7 @@ span {
 .causes-details-wrapper .causes-details-post .details-content .cause-lis-items .list-item li {
   font-size: 20px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   color: var(--header);
 }
 @media (max-width: 575px) {
@@ -8767,7 +8794,7 @@ span {
 }
 .causes-details-wrapper .causes-details-sideber .causes-details-sideber-box .donation-list li {
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8925,7 +8952,7 @@ span {
   font-size: 16px;
   font-weight: 400;
   color: var(--text-2);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   margin-bottom: 20px;
   text-transform: uppercase;
   line-height: 1;
@@ -9624,7 +9651,7 @@ span {
   font-size: 20px;
   font-weight: 400;
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 @media (max-width: 1399px) {
   .volounteer-details-wrapper .volounteer-details-left-item .details-list li {
@@ -9703,7 +9730,7 @@ span {
   font-size: 16px;
   font-weight: 400;
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .volounteer-details-wrapper .volounteer-details-box .progress-wrap .pro-items .progress {
   background: rgba(11, 78, 61, 0.2);
@@ -9759,7 +9786,7 @@ span {
 }
 .volounteer-details-wrapper .volounteer-details-box .list-item .list li {
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   font-size: 20px;
   font-weight: 400;
 }
@@ -9806,7 +9833,7 @@ span {
   color: #666;
   font-size: 16px;
   border-radius: 6px;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .volounteer-Experience-wrapper .contact-form-items .form-clt input::placeholder, .volounteer-Experience-wrapper .contact-form-items .form-clt textarea::placeholder {
   color: #666;
@@ -9830,7 +9857,7 @@ span {
   color: var(--header);
   font-size: 20px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 @media (max-width: 1399px) {
   .volounteer-Experience-wrapper .volounteer-Experience-content .list li {
@@ -9864,7 +9891,7 @@ span {
 .become-volounteer-wrapper .become-volounteer-content .become-volounteer-list .list-item li {
   font-size: 20px;
   font-weight: 400;
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
   color: var(--header);
 }
 @media (max-width: 575px) {
@@ -9899,7 +9926,7 @@ span {
   font-size: 16px;
   font-weight: 400;
   color: var(--header);
-  font-family: "DM Serif Text", serif;
+  font-family: "Playfair Display", serif;
 }
 .become-volounteer-wrapper .become-volounteer-content .progress-wrap .pro-items .progress {
   background: #667471;
@@ -9981,6 +10008,30 @@ span {
 .become-volounteer-wrapper .from-box .theme-btn:hover {
   color: var(--white);
 }
+.become-volounteer-wrapper .from-box .form-section-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--theme-2);
+  margin-bottom: 16px;
+}
+.become-volounteer-wrapper .from-box .verify-email-box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  background-color: var(--bg);
+}
+.become-volounteer-wrapper .from-box .apply-submit-btn {
+  width: auto;
+}
+@media (max-width: 767px) {
+  .become-volounteer-wrapper .from-box .apply-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
 
 .testimonial-wrapper {
   margin-top: 60px;
@@ -10056,7 +10107,7 @@ span {
 }
 .testimonial-wrapper .testimonial-content h6 {
   color: var(--text);
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin-bottom: 40px;
   position: relative;
 }

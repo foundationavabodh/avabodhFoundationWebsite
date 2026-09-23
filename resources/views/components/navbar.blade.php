@@ -95,7 +95,7 @@
         <div class="offcanvas__overlay"></div>
 
         <!-- Header Section Start -->
-        <header id="header-sticky" class="header-1">
+        <header id="header-sticky" class="header-1 header-two-tone">
             <div class="container-fluid">
                 <div class="mega-menu-wrapper">
                     <div class="header-main">

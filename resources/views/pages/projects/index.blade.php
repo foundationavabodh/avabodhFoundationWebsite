@@ -76,7 +76,7 @@
                     @endforeach
                 </div>
 
-                {{ $projects->links('pagination.kindi') }}
+                {{ $projects->links('pagination.theme') }}
             @endif
         </div>
     </section>

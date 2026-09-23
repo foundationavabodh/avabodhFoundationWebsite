@@ -10,7 +10,7 @@
      class for a flatter look (no diagonal shape divider). Both variants share
      this one component, driven by the site's Website Settings. --}}
 @if (in_array($variant, ['home', 'inner']) && $settings->show_header_top_bar)
-        <!-- Header-Top Start (matches the Kindi template's "-2" top-bar design, which is
+        <!-- Header-Top Start (matches this theme's "-2" top-bar design, which is
              what index-3.html -- and every inner page such as about.html/project.html --
              actually use; the "inner" variant just adds the header-inner class those inner
              pages add for a slightly flatter treatment, no shape divider) -->

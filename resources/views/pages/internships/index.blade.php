@@ -177,48 +177,53 @@
 
                             <form action="{{ route('internships.apply') }}" method="POST" id="internship-application-form">
                                 @csrf
-                                <div class="row g-4">
+
+                                <span class="form-section-label">Your Details</span>
+                                <div class="row g-4 mb-4">
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="full_name" id="full_name" placeholder="Full Name *" required value="{{ old('full_name') }}">
+                                            <input type="text" name="full_name" id="full_name" placeholder="Full Name *" required value="{{ old('full_name') }}" autocomplete="name">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="email" name="email" id="email" placeholder="Email Address *" required value="{{ old('email') }}">
+                                            <input type="email" name="email" id="email" placeholder="Email Address *" required value="{{ old('email') }}" autocomplete="email">
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-lg-12">
+                                <div class="verify-email-box mb-4">
+                                    <div class="d-flex flex-wrap align-items-center gap-2">
+                                        <button type="button" id="send-code-btn" class="theme-btn style-3">
+                                            Verify Email
+                                        </button>
+                                        <span id="verify-status" class="small"></span>
+                                    </div>
+
+                                    <div id="code-entry" class="d-none mt-3">
                                         <div class="d-flex flex-wrap align-items-center gap-2">
-                                            <button type="button" id="send-code-btn" class="theme-btn style-3">
-                                                Verify Email
+                                            <input type="text" id="verification_code" placeholder="Enter 6-digit code" inputmode="numeric" maxlength="6" style="max-width: 220px;" class="form-control">
+                                            <button type="button" id="confirm-code-btn" class="theme-btn style-3">
+                                                Confirm Code
                                             </button>
-                                            <span id="verify-status" class="small"></span>
-                                        </div>
-
-                                        <div id="code-entry" class="d-none mt-3">
-                                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                                <input type="text" id="verification_code" placeholder="Enter 6-digit code" inputmode="numeric" maxlength="6" style="max-width: 220px;" class="form-control">
-                                                <button type="button" id="confirm-code-btn" class="theme-btn style-3">
-                                                    Confirm Code
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <input type="hidden" name="email_verified" id="email_verified" value="0">
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="form-clt">
-                                            <input type="text" name="country_code" id="country_code" placeholder="Country Code (e.g. +91)" value="{{ old('country_code') }}">
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-8">
+                                    <input type="hidden" name="email_verified" id="email_verified" value="0">
+                                </div>
+
+                                <span class="form-section-label">Contact &amp; Background</span>
+                                <div class="row g-4 mb-4">
+                                    <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="phone" id="phone" placeholder="Contact Number" value="{{ old('phone') }}">
+                                            <input type="text" name="phone" id="phone" placeholder="Contact Number" value="{{ old('phone') }}" autocomplete="tel">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-clt">
+                                            <input type="text" name="college_name" id="college_name" placeholder="College / Institution Name" value="{{ old('college_name') }}" autocomplete="organization">
                                         </div>
                                     </div>
 
@@ -232,7 +237,7 @@
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <select name="internship_id" id="internship_id" class="single-select" required>
+                                        <select name="internship_id" id="internship_id" class="single-select">
                                             <option value="">Select Internship *</option>
                                             @foreach ($internships as $internship)
                                                 <option value="{{ $internship->id }}" @selected(old('internship_id') == $internship->id)>
@@ -240,11 +245,12 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="form-clt">
-                                            <input type="text" name="college_name" id="college_name" placeholder="College / Institution Name" value="{{ old('college_name') }}">
+                                        {{-- niceSelect (public/assets/js/main.js) hides this <select> and renders its
+                                             own widget in its place. A hidden field's native "required" validation is
+                                             unreliable across browsers (notably silent in Safari), so validation for
+                                             this field is done in JS on submit instead -- see the script below. --}}
+                                        <div id="internship-select-error" class="text-danger small mt-2 d-none">
+                                            Please select an internship.
                                         </div>
                                     </div>
 
@@ -259,13 +265,11 @@
                                             <textarea name="skills" id="skills" placeholder="Relevant Skills">{{ old('skills') }}</textarea>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-6">
-                                        <button type="submit" id="submit-application-btn" class="theme-btn" disabled>
-                                            Submit Application <i class="fa-solid fa-arrow-right-long"></i>
-                                        </button>
-                                    </div>
                                 </div>
+
+                                <button type="submit" id="submit-application-btn" class="theme-btn apply-submit-btn" disabled>
+                                    Submit Application <i class="fa-solid fa-arrow-right-long"></i>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -290,6 +294,8 @@
             const emailVerifiedField = document.getElementById('email_verified');
             const submitBtn = document.getElementById('submit-application-btn');
             const internshipSelect = document.getElementById('internship_id');
+            const applicationForm = document.getElementById('internship-application-form');
+            const internshipSelectError = document.getElementById('internship-select-error');
 
             function setStatus(message, className) {
                 verifyStatus.textContent = message;
@@ -394,6 +400,31 @@
                     }
                     document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
                 });
+            });
+
+            // niceSelect replaces #internship_id with its own widget and hides the
+            // original <select>, so the browser's native "required" validation on
+            // it can't be trusted (it fails silently in Safari in particular).
+            // Validate explicitly here instead, so a missing selection always shows
+            // a clear, visible message rather than the form just doing nothing.
+            applicationForm.addEventListener('submit', function (e) {
+                if (!internshipSelect.value) {
+                    e.preventDefault();
+                    internshipSelectError.classList.remove('d-none');
+                    const niceSelectWidget = internshipSelect.nextElementSibling;
+                    if (niceSelectWidget && niceSelectWidget.classList.contains('nice-select')) {
+                        niceSelectWidget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return false;
+                }
+
+                internshipSelectError.classList.add('d-none');
+            });
+
+            internshipSelect.addEventListener('change', function () {
+                if (internshipSelect.value) {
+                    internshipSelectError.classList.add('d-none');
+                }
             });
         })();
     </script>

@@ -28,7 +28,9 @@ class StoreInternshipApplicationRequest extends FormRequest
 
             'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'country_code' => ['nullable', 'string', 'max:10'],
+            // country_code was dropped from the public form -- the column stays in
+            // the database (nullable, always null going forward) so no migration is
+            // needed and any pre-existing rows are unaffected.
             'phone' => ['nullable', 'string', 'max:30'],
             'preferred_domain_id' => ['nullable', 'integer', 'exists:internship_domains,id'],
             'college_name' => ['nullable', 'string', 'max:255'],

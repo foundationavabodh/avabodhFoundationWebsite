@@ -127,7 +127,6 @@ class InternshipController extends Controller
                 'internship_id',
                 'full_name',
                 'email',
-                'country_code',
                 'phone',
                 'preferred_domain_id',
                 'college_name',
