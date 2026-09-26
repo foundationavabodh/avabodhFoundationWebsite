@@ -69,7 +69,10 @@
                             <div class="contact-us-content">
                                 <span>Email Address</span>
                                 <h5>
-                                    <a href="mailto:{{ $websiteSettings->header_email ?: 'info@donat.com' }}">{{ $websiteSettings->header_email ?: 'info@donat.com' }}</a>
+                                    {{-- str_replace('@', '@<wbr>', ...) lets long emails wrap right
+                                         after the @ instead of breaking mid-word wherever they run out
+                                         of space (which is what overflow-wrap: break-word alone does). --}}
+                                    <a href="mailto:{{ $websiteSettings->header_email ?: 'info@donat.com' }}">{!! str_replace('@', '@<wbr>', e($websiteSettings->header_email ?: 'info@donat.com')) !!}</a>
                                 </h5>
                             </div>
                         </div>
@@ -159,6 +162,30 @@
 
     @push('styles')
         <style>
+            {{-- The three info boxes (Phone/Location/Email) share one .icon size (64x64)
+                 from the vendor's own CSS, but the boxes themselves were different
+                 heights because the Location address wraps onto two lines while
+                 Phone/Email are one line -- giving them a shared min-height keeps all
+                 three the same size regardless of how long the text inside is. --}}
+            .contact-us-wrapper-2 .contact-us-box {
+                min-height: 136px;
+            }
+            /* .contact-us-box is a flex row (icon + text), and flex items shrink
+               by default. The long unbreakable email address ("...@Gmail.Com" has
+               no spaces to wrap at) was squeezing the icon square down to make room
+               for the text, so Phone/Location/Email ended up with different icon
+               widths even though they all use the same 64x64 .icon rule. Locking
+               flex-shrink/grow keeps the icon fixed at 64x64 no matter how long the
+               text next to it is; the text wraps/truncates on its own instead. */
+            .contact-us-wrapper-2 .contact-us-box .icon {
+                flex-shrink: 0;
+                flex-grow: 0;
+            }
+            .contact-us-wrapper-2 .contact-us-box .contact-us-content {
+                min-width: 0;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
             .contact-map-wrapper {
                 position: relative;
                 border-radius: 20px;
