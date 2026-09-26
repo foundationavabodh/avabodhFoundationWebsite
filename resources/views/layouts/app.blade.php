@@ -109,8 +109,49 @@
          <footer class="footer-section header-bg fix">
             <div class="container">
                 <div class="footer-widget-wrapper">
+                    @php
+                        $footerLogoUrl = $websiteSettings->logo
+                            ? \Illuminate\Support\Facades\Storage::disk('public')->url($websiteSettings->logo)
+                            : asset('assets/img/logo/black-logo.svg');
+                    @endphp
                     <div class="row g-4 justify-content-between">
-                        <div class="col-xl-2 col-md-6 col-lg-2 wow fadeInUp" data-wow-delay=".2s">
+                        {{-- Newsletter widget moved to the first position and given the
+                             logo + mission statement above its existing subscribe form,
+                             so this column now doubles as the footer's brand/about block. --}}
+                        <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="single-footer-widget">
+                                <div class="footer-logo mb-3">
+                                    <a href="{{ route('home') }}">
+                                        <img src="{{ $footerLogoUrl }}" alt="{{ $websiteSettings->site_name ?: 'Avbodh Foundation' }}" style="max-height: 48px;">
+                                    </a>
+                                </div>
+                                <p class="mb-4" style="color: #ffffff; text-align: justify;">
+                                    Avabodh Foundation is a youth-driven, non-profit organization
+                                    dedicated to paving 'Steps Towards A Better World'. We connect
+                                    resources, students, and corporates for sustainable community
+                                    impact.
+                                </p>
+                                <div class="footer-newsletter">
+                                    {{-- Each icon only renders once a real link is set for it,
+                                         instead of falling back to a dead "#" link. --}}
+                                    <div class="social-icon">
+                                        @if ($websiteSettings->social_twitter_url)
+                                            <a href="{{ $websiteSettings->social_twitter_url }}"><i class="fa-brands fa-twitter"></i></a>
+                                        @endif
+                                        @if ($websiteSettings->social_whatsapp_url)
+                                            <a href="{{ $websiteSettings->social_whatsapp_url }}"><i class="fa-brands fa-whatsapp"></i></a>
+                                        @endif
+                                        @if ($websiteSettings->social_instagram_url)
+                                            <a href="{{ $websiteSettings->social_instagram_url }}"><i class="fa-brands fa-instagram"></i></a>
+                                        @endif
+                                        @if ($websiteSettings->social_youtube_url)
+                                            <a href="{{ $websiteSettings->social_youtube_url }}"><i class="fa-brands fa-youtube"></i></a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".4s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
                                     <h3>Quick Links</h3>
@@ -149,7 +190,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6 col-lg-3 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".6s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
                                     <h3>Explore Now</h3>
@@ -182,7 +223,7 @@
                                 </ul>
                             </div>
                         </div>
-                         <div class="col-xl-2 col-md-6 col-lg-2 wow fadeInUp" data-wow-delay=".6s">
+                         <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
                                     <h3>Supports</h3>
@@ -213,32 +254,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 col-md-6 col-lg-5 ps-lg-5 wow fadeInUp" data-wow-delay=".8s">
-                            <div class="single-footer-widget">
-                                <div class="wid-title">
-                                    <h3>Newsletter</h3>
-                                </div>
-                                <div class="footer-newsletter">
-                                    <p>
-                                        {{ $websiteSettings->footer_description ?: 'Charity not only helps to reduce suffering but also fosters a sense of unity and shared responsibility in society.' }}
-                                    </p>
-                                    <form action="#">
-                                        <div class="form-clt">
-                                            <input type="text" name="email" id="email" placeholder="Enter Your Email">
-                                            <button type="submit" class="theme-btn">
-                                               Subscribe Now
-                                            </button>
-                                        </div>
-                                    </form>
-                                    <div class="social-icon">
-                                        <a href="{{ $websiteSettings->social_twitter_url ?: '#' }}"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="{{ $websiteSettings->social_whatsapp_url ?: '#' }}"><i class="fa-brands fa-whatsapp"></i></a>
-                                        <a href="{{ $websiteSettings->social_instagram_url ?: '#' }}"><i class="fa-brands fa-instagram"></i></a>
-                                        <a href="{{ $websiteSettings->social_youtube_url ?: '#' }}"><i class="fa-brands fa-youtube"></i></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
