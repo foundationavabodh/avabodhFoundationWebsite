@@ -46,15 +46,32 @@ Version: 1.0.0
   --body: #fff;
   --black: #000;
   --white: #fff;
-  --theme: #E8A33D;
-  --theme-2: #0F5C5C;
-  --header: #122F2A;
-  --text: #667471;
-  --text-2: #0F5C5C;
+  --theme: #209546;
+  --theme-2: #155A35;
+  --header: #243238;
+  --text: #243238;
+  --text-2: #155A35;
   --border: #C9C9C9;
-  --bg: #F8F3E7;
-  --bg-2: #122F2A;
+  --bg: #F8FAF5;
+  --bg-2: #243238;
   --box-shadow: 0px 1px 14px 0px rgba(0, 0, 0, 0.13);
+  /* New palette tokens, requested alongside the --theme/--theme-2/etc remap
+     above (main.css only ever references the --theme*/--header/--text*/--bg*
+     names, so those existing variables carry the new colors site-wide).
+     --secondary/--accent/--highlight aren't wired into any existing rule yet
+     -- they're here under their own names so they're available if specific
+     elements should pull from them later. */
+  --primary: #209546;
+  --secondary: #00AEF1;
+  --accent: #F1C27D;
+  --highlight: #BBD540;
+  --heading: #155A35;
+  --background: #F8FAF5;
+  /* Refinement from the follow-up color-legend reference: a deep blue for
+     heading/text emphasis, and an optional earth-brown accent, layered on
+     top of the palette above (not replacing it). */
+  --deep-blue: #1C76BD;
+  --earth-brown: #C68642;
 }
 
 .theme-btn {
@@ -5051,8 +5068,8 @@ span {
 }
 .header-top-wrapper-2 .social-icon a {
   font-size: 20px;
-  color: var(--theme);
-  border: 1px solid var(--theme);
+  color: var(--white);
+  border: 1px solid var(--white);
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -5460,7 +5477,7 @@ span {
   background-color: var(--bg);
 }
 .header-1.header-2.header-3::before {
-  background-color: var(--theme);
+  background-color: var(--white);
 }
 @media (max-width: 1399px) {
   .header-1.header-2.header-3 .header-main .header-left .logo .header-logo {

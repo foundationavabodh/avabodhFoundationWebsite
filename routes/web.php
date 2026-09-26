@@ -6,16 +6,21 @@ use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    // Homepage swapped to the "index-3" design (resources/views/pages/home-3.blade.php).
-    // The original pages.home view is left in place, untouched and unrouted, so it can be
-    // restored instantly by pointing this back at it if home-3 needs to be rolled back.
-    return view('pages.home-3', [
+    // Homepage swapped to the "index-4" design (resources/views/pages/home-4.blade.php).
+    // Both pages.home (the original) and pages.home-3 (the previous design) are left in
+    // place, untouched and unrouted, so either can be restored instantly by pointing this
+    // back at it if home-4 needs to be rolled back.
+    return view('pages.home-4', [
         'slides' => Slider::query()
             ->where('is_active', true)
             ->orderBy('display_order')
             ->get(),
     ]);
 })->name('home');
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
