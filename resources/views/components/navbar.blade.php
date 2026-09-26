@@ -135,7 +135,7 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                             <div class="header-button">
-                                <a href="donation-details.html" class="theme-btn">
+                                <a href="#donateModal" class="theme-btn" data-bs-toggle="modal" data-bs-target="#donateModal">
                                   Donte Now <i class="fa-solid fa-arrow-right"></i>
                                 </a>
                             </div>
