@@ -191,9 +191,11 @@
                             </div>
                         </div>
                         {{-- Replaces the old "Explore Now" link list with a Contact Office
-                             column, matching the live avabodhfoundation.org footer -- reusing
-                             the same header_address/header_phone/header_email settings fields
-                             (and fallbacks) already used by the top contact bar. --}}
+                             column, matching the live avabodhfoundation.org footer. The address
+                             is the foundation's real office address (hardcoded per request,
+                             kept separate from header_address, which only drives the shorter
+                             "Nagpur" text in the compact top contact bar); phone/email still
+                             reuse the same header_phone/header_email settings fields. --}}
                         <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".6s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
@@ -202,7 +204,7 @@
                                 <ul class="list-area">
                                     <li style="color: var(--white);">
                                         <i class="fa-regular fa-location-dot" style="color: var(--theme); margin-right: 5px;"></i>
-                                        {{ $websiteSettings->header_address ?: 'Network City, USA' }}
+                                        Plot No. 81, Mahakali Nagar, Besa, Nagpur, Maharashtra, 440034
                                     </li>
                                     <li>
                                         <a href="tel:{{ preg_replace('/[^\d+]/', '', $websiteSettings->header_phone ?: '+16336547896') }}">
