@@ -82,33 +82,79 @@
                             <h4>
                                 Send Us A Message
                             </h4>
-                            {{-- Static for now, same as the footer's newsletter form
-                                 (action="#") -- no backend wiring requested yet. Ask
-                                 if you'd like this to actually email/save submissions. --}}
-                            <form action="#" id="contact-form" method="POST">
+
+                            {{-- Submits to ContactController@store (see routes/web.php), which
+                                 validates via StoreContactMessageRequest and emails a copy to
+                                 the foundation's inbox (ContactFormSubmitted notification). --}}
+                            @if (session('contactMessageSent'))
+                                <div class="alert alert-success contact-form-alert" role="alert">
+                                    <strong>Message sent!</strong> Thanks for reaching out -- we've received your message and will get back to you soon.
+                                </div>
+                            @endif
+
+                            @if (session('contactError'))
+                                <div class="alert alert-danger contact-form-alert" role="alert">
+                                    {{ session('contactError') }}
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger contact-form-alert" role="alert">
+                                    <strong>Please fix the following:</strong>
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('contact.submit') }}" method="POST" id="contact-form">
+                                @csrf
                                 <div class="row g-4">
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <input type="text" name="name" id="contact-name" placeholder="Your Name">
+                                            <input type="text" name="name" id="contact-name" placeholder="Your Name *"
+                                                   value="{{ old('name') }}" required maxlength="255" autocomplete="name"
+                                                   class="@error('name') is-invalid @enderror">
+                                            @error('name')
+                                                <div class="contact-form-error">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <input type="email" name="email" id="contact-email" placeholder="Enter Your Email">
+                                            <input type="email" name="email" id="contact-email" placeholder="Enter Your Email *"
+                                                   value="{{ old('email') }}" required maxlength="255" autocomplete="email"
+                                                   class="@error('email') is-invalid @enderror">
+                                            @error('email')
+                                                <div class="contact-form-error">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <input type="text" name="number" id="contact-number" placeholder="Phone Number">
+                                            <input type="text" name="number" id="contact-number" placeholder="Phone Number"
+                                                   value="{{ old('number') }}" maxlength="20" autocomplete="tel"
+                                                   pattern="[0-9+\-\s()]{7,20}" title="Enter a valid phone number"
+                                                   class="@error('number') is-invalid @enderror">
+                                            @error('number')
+                                                <div class="contact-form-error">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <textarea name="message" id="contact-message" placeholder="Type your message"></textarea>
+                                            <textarea name="message" id="contact-message" placeholder="Type your message *"
+                                                      required minlength="10" maxlength="5000"
+                                                      class="@error('message') is-invalid @enderror">{{ old('message') }}</textarea>
+                                            @error('message')
+                                                <div class="contact-form-error">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <button type="submit" class="theme-btn">
+                                        <button type="submit" class="theme-btn" id="contact-submit-btn">
                                             Send Message <i class="fa-solid fa-arrow-right-long"></i>
                                         </button>
                                     </div>
@@ -263,7 +309,45 @@
                     height: 350px;
                 }
             }
+
+            /* "Send Us A Message" form validation styling. */
+            .contact-form-alert {
+                margin-bottom: 24px;
+                border-radius: 10px;
+            }
+            .from-fill-up-box .form-clt input.is-invalid,
+            .from-fill-up-box .form-clt textarea.is-invalid {
+                border-color: #dc3545 !important;
+            }
+            .contact-form-error {
+                color: #dc3545;
+                font-size: 13px;
+                margin-top: 6px;
+            }
         </style>
+    @endpush
+
+    @push('scripts')
+        <script>
+            // Prevents a double-submit (and a duplicate email) if someone double-clicks
+            // "Send Message" or the request is slow -- native HTML5 required/type=email/
+            // pattern/minlength validation on the fields themselves is what enforces the
+            // actual validation rules client-side; StoreContactMessageRequest enforces
+            // the same rules server-side regardless.
+            (function () {
+                var form = document.getElementById('contact-form');
+                var submitBtn = document.getElementById('contact-submit-btn');
+
+                if (form && submitBtn) {
+                    form.addEventListener('submit', function () {
+                        if (form.checkValidity()) {
+                            submitBtn.setAttribute('disabled', 'disabled');
+                            submitBtn.innerHTML = 'Sending...';
+                        }
+                    });
+                }
+            })();
+        </script>
     @endpush
 
 @endsection

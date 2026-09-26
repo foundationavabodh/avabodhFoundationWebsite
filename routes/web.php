@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Partner;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,24 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
+
+Route::get('/ngo', function () {
+    return view('pages.ngo', [
+        'partners' => Partner::active()->get(),
+    ]);
+})->name('ngo');
+
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+// Public "Send Us A Message" form submission (see ContactController + its
+// StoreContactMessageRequest / ContactFormSubmitted notification). Throttled
+// the same way the internship endpoints are, since this is a public,
+// unauthenticated POST that emails the foundation's inbox.
+Route::post('/contact', [ContactController::class, 'store'])
+    ->name('contact.submit')
+    ->middleware('throttle:5,1');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
