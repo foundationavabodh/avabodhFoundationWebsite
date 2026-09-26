@@ -283,6 +283,55 @@
             </div>
          </footer>
 
+        {{-- Donate Now popup, triggered from the header button in the navbar
+             component via data-bs-toggle="modal" data-bs-target="#donateModal".
+             Content mirrors the live avabodhfoundation.org/donate page: the
+             PhonePe/UPI QR code, the UPI ID, and the 80G tax-exemption note.
+
+             The sticky header (main.css `.sticky`) uses z-index: 99999, higher
+             than Bootstrap's default modal stack (1055/1050), so without this
+             override the header renders on top of the modal. This is the only
+             Bootstrap modal on the site, so bumping .modal/.modal-backdrop here
+             is safe. --}}
+        <style>
+            #donateModal.modal { z-index: 100000; }
+            .modal-backdrop { z-index: 99998; }
+        </style>
+        <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none;">
+                    <div class="modal-header" style="background-color: var(--theme); border: none;">
+                        <h5 class="modal-title" id="donateModalLabel" style="color: var(--white); font-weight: 600;">
+                            Support Avabodh Foundation
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center" style="padding: 30px;">
+                        <p style="color: var(--text); margin-bottom: 20px;">
+                            Avabodh Foundation is a youth-driven, non-profit organization dedicated to
+                            paving 'Steps Towards A Better World'. Your contribution helps us connect
+                            resources, students, and corporates for sustainable community impact.
+                        </p>
+                        <img src="{{ asset('assets/img/donate/phonepe-qr.png') }}" alt="Scan to donate via UPI"
+                             style="width: 220px; height: 220px; margin: 0 auto 16px; display: block; border: 1px solid var(--border); border-radius: 8px; padding: 8px; background: var(--white);">
+                        <p style="font-weight: 600; color: var(--heading); margin-bottom: 12px;">
+                            Scan via any UPI app (GPay, PhonePe, Paytm)
+                        </p>
+                        <div style="background-color: var(--bg); border-radius: 8px; padding: 10px 16px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                            <span id="donateUpiId" style="font-weight: 600; color: var(--text); text-transform: none;">9096617654boi@ybl</span>
+                            <button type="button" class="theme-btn" style="padding: 4px 14px; font-size: 13px;"
+                                    onclick="donateCopyUpiId(this)">
+                                Copy
+                            </button>
+                        </div>
+                        <p style="font-size: 14px; color: var(--theme-2); font-weight: 600; margin-bottom: 0;">
+                            All donations exempt under Section 80G
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!--<< All JS Plugins >>-->
         <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
         <!--<< Viewport Js >>-->
@@ -305,6 +354,36 @@
         <script src="{{ asset('assets/js/wow.min.js') }}"></script>
         <!--<< Main.js >>-->
         <script src="{{ asset('assets/js/main.js') }}"></script>
+
+        <script>
+            function donateCopyUpiId(btn) {
+                var text = '9096617654boi@ybl';
+                function done() {
+                    btn.innerText = 'Copied';
+                    setTimeout(function () { btn.innerText = 'Copy'; }, 1500);
+                }
+                function fallbackCopy() {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.focus();
+                    ta.select();
+                    try { document.execCommand('copy'); } catch (e) { /* no-op */ }
+                    document.body.removeChild(ta);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(done).catch(function () {
+                        fallbackCopy();
+                        done();
+                    });
+                } else {
+                    fallbackCopy();
+                    done();
+                }
+            }
+        </script>
 
         @stack('scripts')
 </body>
