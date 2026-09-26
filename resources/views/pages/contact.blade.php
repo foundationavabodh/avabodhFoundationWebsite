@@ -134,9 +134,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <input type="text" name="number" id="contact-number" placeholder="Phone Number"
-                                                   value="{{ old('number') }}" maxlength="20" autocomplete="tel"
-                                                   pattern="[0-9+\-\s()]{7,20}" title="Enter a valid phone number"
+                                            <input type="tel" name="number" id="contact-number" placeholder="Phone Number *"
+                                                   value="{{ old('number') }}" required inputmode="numeric" autocomplete="tel"
+                                                   minlength="10" maxlength="10" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number"
                                                    class="@error('number') is-invalid @enderror">
                                             @error('number')
                                                 <div class="contact-form-error">{{ $message }}</div>

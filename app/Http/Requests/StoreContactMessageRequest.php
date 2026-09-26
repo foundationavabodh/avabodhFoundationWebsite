@@ -27,7 +27,10 @@ class StoreContactMessageRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255'],
             // Field is named "number" (not "phone") to match the existing
             // form markup in resources/views/pages/contact.blade.php.
-            'number' => ['nullable', 'string', 'max:20', 'regex:/^[0-9+\-\s()]{7,20}$/'],
+            // Required, and must be exactly 10 digits (no spaces, dashes,
+            // +91, etc.) -- the form's own pattern/inputmode strip anything
+            // else before submit, so this is the server-side backstop.
+            'number' => ['required', 'digits:10'],
             'message' => ['required', 'string', 'min:10', 'max:5000'],
         ];
     }
@@ -41,7 +44,8 @@ class StoreContactMessageRequest extends FormRequest
             'name.required' => 'Please enter your name.',
             'email.required' => 'Please enter your email address.',
             'email.email' => 'Please enter a valid email address.',
-            'number.regex' => 'Please enter a valid phone number.',
+            'number.required' => 'Please enter your phone number.',
+            'number.digits' => 'Please enter a valid 10-digit phone number.',
             'message.required' => 'Please enter a message.',
             'message.min' => 'Your message is too short -- please add a few more details.',
             'message.max' => 'Your message is too long (max 5000 characters).',
