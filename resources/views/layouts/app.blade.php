@@ -190,70 +190,56 @@
                                 </ul>
                             </div>
                         </div>
+                        {{-- Replaces the old "Explore Now" link list with a Contact Office
+                             column, matching the live avabodhfoundation.org footer -- reusing
+                             the same header_address/header_phone/header_email settings fields
+                             (and fallbacks) already used by the top contact bar. --}}
                         <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".6s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
-                                    <h3>Explore Now</h3>
+                                    <h3>Contact Office</h3>
                                 </div>
                                 <ul class="list-area">
+                                    <li style="color: var(--white);">
+                                        <i class="fa-regular fa-location-dot" style="color: var(--theme); margin-right: 5px;"></i>
+                                        {{ $websiteSettings->header_address ?: 'Network City, USA' }}
+                                    </li>
                                     <li>
-                                        <a href="volounteer-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Volunteers
+                                        <a href="tel:{{ preg_replace('/[^\d+]/', '', $websiteSettings->header_phone ?: '+16336547896') }}">
+                                            <i class="fa-solid fa-phone-volume"></i>
+                                            {{ $websiteSettings->header_phone ?: '+163 3654 7896' }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="project-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                           Project
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="event-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Event
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="project-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Causes
+                                        <a href="mailto:{{ $websiteSettings->header_email ?: 'info@donat.com' }}">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            {{ $websiteSettings->header_email ?: 'info@donat.com' }}
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                         <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
+                        {{-- Replaces the old "Supports" link list with a Stay Updated
+                             newsletter column, matching the live avabodhfoundation.org footer. --}}
+                        <div class="col-xl-3 col-md-6 col-lg-3 wow fadeInUp" data-wow-delay=".8s">
                             <div class="single-footer-widget">
                                 <div class="wid-title">
-                                    <h3>Supports</h3>
+                                    <h3>Stay Updated</h3>
                                 </div>
-                                <ul class="list-area">
-                                    <li>
-                                        <a href="donation-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Domination
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="news.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                           Forums
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="faq.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Faq
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Support Policy
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="footer-newsletter">
+                                    <p>
+                                        Subscribe to our newsletter to receive updates on our
+                                        plantation drives and internship openings.
+                                    </p>
+                                    <form action="#">
+                                        <div class="form-clt">
+                                            <input type="text" name="email" id="footer-stay-updated-email" placeholder="Your Email Address">
+                                            <button type="submit" class="theme-btn">
+                                               Join
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
