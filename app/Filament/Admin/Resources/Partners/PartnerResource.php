@@ -22,6 +22,31 @@ class PartnerResource extends Resource
 
     protected static ?string $navigationLabel = 'NGO Network Partners';
 
+    /**
+     * Number of NGO registrations waiting for review, shown next to the menu item.
+     */
+    public static function getNavigationBadge(): ?string
+    {
+        try {
+            $pending = Partner::pending()->count();
+        } catch (\Throwable) {
+            // e.g. the approval_status migration hasn't been run yet
+            return null;
+        }
+
+        return $pending > 0 ? (string) $pending : null;
+    }
+
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return 'warning';
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'NGO registrations pending review';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return PartnerForm::configure($schema);

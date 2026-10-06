@@ -49,6 +49,11 @@
                     leading non-profits, and corporate CSR entities in Nagpur and beyond to drive
                     sustainable community growth.
                 </p>
+                <div class="mt-4 wow fadeInUp" data-wow-delay=".6s">
+                    <a href="{{ route('ngo.register') }}" class="theme-btn">
+                        <i class="fa-solid fa-circle-plus"></i> Register Your NGO
+                    </a>
+                </div>
             </div>
 
             <div class="partner-filter-bar wow fadeInUp" data-wow-delay=".2s">
@@ -95,7 +100,7 @@
                                     </div>
                                 @endif
                                 <div class="partner-identity-text">
-                                    <h5 class="partner-name">{{ $partner->name }}</h5>
+                                    <h5 class="partner-name">@if ($partner->slug)<a href="{{ route('ngo.show', $partner) }}">{{ $partner->name }}</a>@else{{ $partner->name }}@endif</h5>
                                     <span class="partner-tagline partner-tagline-{{ $partner->category->value }}">
                                         {{ strtoupper($partner->tag_line) }}
                                     </span>
@@ -104,7 +109,9 @@
                             <p class="partner-description">{{ $partner->description }}</p>
                             <div class="partner-meta">
                                 <span><i class="fa-solid fa-location-dot"></i> {{ $partner->location }}</span>
-                                <span class="partner-active"><i class="fa-solid fa-signal"></i> Active Network <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                                @if ($partner->slug)
+                                    <a href="{{ route('ngo.show', $partner) }}" class="partner-readmore">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -131,7 +138,10 @@
                     non-profit manager? Collaborate with us to run primary education modules and
                     skill training.
                 </p>
-                <a href="mailto:{{ $websiteSettings->header_email ?: 'info@donat.com' }}" class="theme-btn">
+                <a href="{{ route('ngo.register') }}" class="theme-btn">
+                    Register Your NGO <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="mailto:{{ $websiteSettings->header_email ?: 'info@donat.com' }}" class="theme-btn border-btn">
                     Partner with Avabodh <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
@@ -314,6 +324,31 @@
             .partner-meta i {
                 color: var(--theme);
                 margin-right: 4px;
+            }
+            .partner-name a {
+                color: inherit;
+            }
+            .partner-name a:hover {
+                color: var(--theme);
+            }
+            .partner-readmore {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--theme);
+                transition: all 0.3s ease-in-out;
+            }
+            .partner-readmore i {
+                margin-right: 0;
+                transition: transform 0.3s ease-in-out;
+            }
+            .partner-readmore:hover {
+                color: var(--heading);
+            }
+            .partner-readmore:hover i {
+                transform: translateX(4px);
             }
             .partner-empty-state {
                 text-align: center;

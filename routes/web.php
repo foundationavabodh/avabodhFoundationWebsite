@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PartnerRegistrationController;
 use App\Http\Controllers\ProjectController;
 use App\Models\Partner;
 use App\Models\Slider;
@@ -29,6 +31,17 @@ Route::get('/ngo', function () {
         'partners' => Partner::active()->get(),
     ]);
 })->name('ngo');
+
+// Public NGO self-registration (the "NGO Information Collection Form"). Submissions
+// are saved as pending and listed only after an admin approves them. Declared before
+// /ngo/{partner:slug} so "register" is never treated as a slug.
+Route::get('/ngo/register', [PartnerRegistrationController::class, 'create'])->name('ngo.register');
+Route::post('/ngo/register', [PartnerRegistrationController::class, 'store'])
+    ->name('ngo.register.store')
+    ->middleware('throttle:5,10');
+
+// Public detail page for a single NGO / partner ("Read More" on the /ngo cards).
+Route::get('/ngo/{partner:slug}', [PartnerController::class, 'show'])->name('ngo.show');
 
 Route::get('/contact', function () {
     return view('pages.contact');
