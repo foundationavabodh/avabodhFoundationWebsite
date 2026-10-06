@@ -249,14 +249,16 @@
                 <div class="row">
                     <div class="col-xl-9">
                         <div class="hero-content">
-                            <h4 class="wow fadeInUp">Non - Profit Charity</h4>
+                            <h4 class="wow fadeInUp">Step Towards A Better World</h4>
                             <h1 class="wow fadeInUp" data-wow-delay=".3s">
-                                Make Someone's Life By Giving Of Yours's.
+                                Uniting Leaders, Empowering Youth for Lasting Change
                             </h1>
                             <p class="wow fadeInUp" data-wow-delay=".4s">
-                                Avabodh Foundation brings communities together to support
-                                education, skill-building and local outreach -- every
-                                contribution, big or small, helps someone move forward.
+                                At Avabodh Foundation, we connect corporates, NGOs, and academic
+                                institutions to execute meaningful CSR initiatives and hands-on
+                                social internships. Together, we build resilient communities and
+                                drive sustainable solutions across education, child welfare, and
+                                environmental development.
                             </p>
                             <div class="hero-button-item wow fadeInUp" data-wow-delay=".5s">
                                 <a href="{{ route('internships.index') }}" class="theme-btn border-btn">Join With Us <i class="fa-solid fa-arrow-right-long"></i></a>
@@ -288,39 +290,43 @@
                             <div class="section-title style-2 mb-0">
                                 <span class="sub-title wow fadeInUp">About Us</span>
                                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                    <span>U</span>nited for a cause <br> inspired by humanity.
+                                    <span>B</span>ridging Partnerships for an Equitable, Sustainable Future
                                 </h2>
                             </div>
                             <p class="text wow fadeInUp" data-wow-delay=".3s">
-                                Avabodh Foundation works with students, volunteers and local
-                                partners to make education and opportunity a little more
-                                within reach for the people who need it most.
+                                At Avabodh Foundation, we bridge the gap between corporate CSR
+                                initiatives, dedicated grassroots NGOs, and forward-thinking
+                                academic institutions. By aligning resources with genuine
+                                community needs, we transform collective vision into tangible
+                                change on the ground.
                             </p>
                             <div class="about-box wow fadeInUp" data-wow-delay=".5s">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-2/icon/01.svg') }}" alt="img">
+                                    <i class="fa-solid fa-handshake"></i>
                                 </div>
                                 <div class="content">
                                     <h5>
-                                        Helping people rebuild and prepare
+                                        Strategic Alliances &amp; CSR Execution
                                     </h5>
                                     <p>
-                                        From learning support to hands-on training, we walk
-                                        alongside every participant, not just fund them.
+                                        We match corporate CSR programs with verified NGO
+                                        initiatives to drive sustainable development in
+                                        education, healthcare, and community welfare.
                                     </p>
                                 </div>
                             </div>
                             <div class="about-box mb-0 wow fadeInUp" data-wow-delay=".3s">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-2/icon/03.svg') }}" alt="img">
+                                    <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
                                 <div class="content">
                                     <h5>
-                                        Putting people first in everything we do
+                                        Youth Empowerment &amp; Hands-on Internships
                                     </h5>
                                     <p>
-                                        Every program starts with listening to the community
-                                        it's meant to serve.
+                                        Our structured internship program equips students from
+                                        over 80+ colleges with experiential field learning across
+                                        impactful social projects.
                                     </p>
                                 </div>
                             </div>
@@ -365,9 +371,9 @@
         <div class="container">
             <div class="section-title-area">
                 <div class="section-title style-2">
-                    <span class="sub-title wow fadeInUp">What We Do</span>
+                    <span class="sub-title wow fadeInUp">Our Focus Areas &amp; Solutions</span>
                     <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                        <span>P</span>rograms built around <br> real community <br> needs
+                        <span>S</span>trategic Solutions Connecting <br> Corporates, NGOs &amp; Youth
                     </h2>
                 </div>
                 <div class="arrow-button">
@@ -385,16 +391,15 @@
                         <div class="service-card-items-3">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-1/icon/01.svg') }}" alt="img">
+                                    <img src="{{ asset('assets/img/home-2/icon/01.svg') }}" alt="img">
                                 </div>
                                 <div class="content">
                                     <h4>01</h4>
                                     <h5>
-                                        <a href="{{ route('internships.index') }}">Education &amp; learning support</a>
+                                        <a href="{{ route('internships.index') }}">Corporate CSR Collaborations</a>
                                     </h5>
                                     <p>
-                                        Tutoring, mentorship and internship placements for
-                                        students who need a head start.
+                                        Strategic partnerships pairing businesses with verified grassroots initiatives to ensure transparent, measurable CSR impact aligned with UN Sustainable Development Goals.
                                     </p>
                                 </div>
                             </div>
@@ -417,11 +422,10 @@
                                 <div class="content">
                                     <h4>02</h4>
                                     <h5>
-                                        <a href="{{ route('internships.index') }}">Skill development programs</a>
+                                        <a href="{{ route('internships.index') }}">NGO Digital &amp; Tech Infrastructure</a>
                                     </h5>
                                     <p>
-                                        Hands-on training so young people leave with a real,
-                                        usable skill.
+                                        Supplying verified non-profits with pro-bono web design, app development, and digital outreach to scale their public visibility, transparency, and donor engagement.
                                     </p>
                                 </div>
                             </div>
@@ -439,22 +443,73 @@
                         <div class="service-card-items-3 accent-highlight">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-1/icon/03.svg') }}" alt="img">
+                                    <img src="{{ asset('assets/img/home-1/icon/01.svg') }}" alt="img">
                                 </div>
                                 <div class="content">
                                     <h4>03</h4>
                                     <h5>
-                                        <a href="about.html">Community outreach initiatives</a>
+                                        <a href="{{ route('internships.index') }}">Foundational Learning &amp; School Relief</a>
                                     </h5>
                                     <p>
-                                        Local events and drives that bring resources directly
-                                        to the people who need them.
+                                        Distributing comprehensive learning kits, school bags, and stationery sets to underprivileged students in municipal schools to reduce early education dropouts.
                                     </p>
                                 </div>
                             </div>
                             <div class="service-image">
                                 <img src="{{ asset('assets/img/home-1/project/03.jpg') }}" alt="img">
-                                <a href="about.html" class="icon">
+                                <a href="{{ route('internships.index') }}" class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0156 3.66935C4.35751 11.2608 3.60376 27.2925 3.60376 27.2925C3.5822 27.7294 3.91876 28.102 4.35611 28.124C4.79298 28.1461 5.16564 27.809 5.18767 27.3717C5.18767 27.3717 6.02158 11.8373 24.4603 4.80419C23.9995 5.93435 23.4099 6.97451 22.8881 8.07654C22.7011 8.47216 22.8699 8.94513 23.2655 9.13263C23.6611 9.31966 24.1341 9.15044 24.3216 8.75529C24.9024 7.52763 25.5614 6.37216 26.0503 5.09622C26.0995 4.96779 26.4994 3.90044 26.512 3.64544C26.5341 3.2006 26.281 2.98216 26.1244 2.88607C25.5877 2.55654 24.908 2.35638 24.1866 2.23076C23.2669 2.07044 22.2755 2.03154 21.5274 1.88904C21.0975 1.80747 20.6822 2.08966 20.6002 2.51951C20.5186 2.94935 20.8013 3.36513 21.2311 3.44669C21.7458 3.54466 22.3734 3.59622 23.0156 3.66935Z" fill="#0B4E3D"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card-items-3">
+                            <div class="service-content">
+                                <div class="icon">
+                                    <img src="{{ asset('assets/img/home-1/icon/03.svg') }}" alt="img">
+                                </div>
+                                <div class="content">
+                                    <h4>04</h4>
+                                    <h5>
+                                        <a href="{{ route('internships.index') }}">Civic Health &amp; De-Addiction Drives</a>
+                                    </h5>
+                                    <p>
+                                        Organizing street-level traffic junction campaigns in collaboration with police authorities to combat youth substance abuse and provide counseling links.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="service-image">
+                                <img src="{{ asset('assets/img/home-1/project/01.jpg') }}" alt="img">
+                                <a href="{{ route('internships.index') }}" class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0156 3.66935C4.35751 11.2608 3.60376 27.2925 3.60376 27.2925C3.5822 27.7294 3.91876 28.102 4.35611 28.124C4.79298 28.1461 5.16564 27.809 5.18767 27.3717C5.18767 27.3717 6.02158 11.8373 24.4603 4.80419C23.9995 5.93435 23.4099 6.97451 22.8881 8.07654C22.7011 8.47216 22.8699 8.94513 23.2655 9.13263C23.6611 9.31966 24.1341 9.15044 24.3216 8.75529C24.9024 7.52763 25.5614 6.37216 26.0503 5.09622C26.0995 4.96779 26.4994 3.90044 26.512 3.64544C26.5341 3.2006 26.281 2.98216 26.1244 2.88607C25.5877 2.55654 24.908 2.35638 24.1866 2.23076C23.2669 2.07044 22.2755 2.03154 21.5274 1.88904C21.0975 1.80747 20.6822 2.08966 20.6002 2.51951C20.5186 2.94935 20.8013 3.36513 21.2311 3.44669C21.7458 3.54466 22.3734 3.59622 23.0156 3.66935Z" fill="#0B4E3D"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card-items-3 accent-secondary">
+                            <div class="service-content">
+                                <div class="icon">
+                                    <img src="{{ asset('assets/img/home-2/icon/03.svg') }}" alt="img">
+                                </div>
+                                <div class="content">
+                                    <h4>05</h4>
+                                    <h5>
+                                        <a href="{{ route('internships.index') }}">Civic Internships &amp; Field Placement</a>
+                                    </h5>
+                                    <p>
+                                        120-hour structured experiential programs across 15+ functional domains&mdash;empowering university students with hands-on social problem-solving skills.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="service-image">
+                                <img src="{{ asset('assets/img/home-1/project/02.jpg') }}" alt="img">
+                                <a href="{{ route('internships.index') }}" class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0156 3.66935C4.35751 11.2608 3.60376 27.2925 3.60376 27.2925C3.5822 27.7294 3.91876 28.102 4.35611 28.124C4.79298 28.1461 5.16564 27.809 5.18767 27.3717C5.18767 27.3717 6.02158 11.8373 24.4603 4.80419C23.9995 5.93435 23.4099 6.97451 22.8881 8.07654C22.7011 8.47216 22.8699 8.94513 23.2655 9.13263C23.6611 9.31966 24.1341 9.15044 24.3216 8.75529C24.9024 7.52763 25.5614 6.37216 26.0503 5.09622C26.0995 4.96779 26.4994 3.90044 26.512 3.64544C26.5341 3.2006 26.281 2.98216 26.1244 2.88607C25.5877 2.55654 24.908 2.35638 24.1866 2.23076C23.2669 2.07044 22.2755 2.03154 21.5274 1.88904C21.0975 1.80747 20.6822 2.08966 20.6002 2.51951C20.5186 2.94935 20.8013 3.36513 21.2311 3.44669C21.7458 3.54466 22.3734 3.59622 23.0156 3.66935Z" fill="#0B4E3D"/>
                                     </svg>
@@ -472,9 +527,9 @@
     <section class="casuss-section-3 section-padding fix">
         <div class="container">
             <div class="section-title style-2 text-center">
-                <span class="sub-title wow fadeInUp">Our Causes</span>
+                <span class="sub-title wow fadeInUp">Our Initiatives</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    <span>C</span>hanging lives through action
+                    <span>D</span>riving Sustainable Change Through Direct Action
                 </h2>
             </div>
             <div class="row">
@@ -491,11 +546,12 @@
                         </div>
                         <div class="causes-content">
                             <h4>
-                                <a href="{{ route('projects.index') }}">Support Child Education</a>
+                                <a href="{{ route('projects.index') }}">Educational Empowerment</a>
                             </h4>
                             <p>
-                                Books, supplies and tutoring for children whose families
-                                can't cover the basics on their own.
+                                Providing durable school bags, stationery boxes, and essential
+                                academic kits to underprivileged primary and middle school
+                                students in municipal schools to remove learning barriers.
                             </p>
                             <div class="pro-items">
                                 <div class="progress">
@@ -503,10 +559,10 @@
                                 </div>
                             </div>
                             <ul class="donate-list">
-                                <li>Raised - $ 16,020.00</li>
-                                <li>57%</li>
+                                <li>Kits Distributed: 300 / 300</li>
+                                <li>100% Fulfilled</li>
                             </ul>
-                            <a href="{{ route('projects.index') }}" class="theme-btn">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="{{ route('projects.index') }}" class="theme-btn">Read Field Report <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -523,11 +579,12 @@
                         </div>
                         <div class="causes-content">
                             <h4>
-                                <a href="{{ route('projects.index') }}">Skill Training For Youth</a>
+                                <a href="{{ route('projects.index') }}">Substance Abuse Sensitization</a>
                             </h4>
                             <p>
-                                Practical, job-ready training so young people can build a
-                                path toward stable work.
+                                Organizing street-level traffic signal rallies with Nagpur
+                                police and municipal bodies, sensitizing thousands of commuters
+                                to drug hazards and sharing helpline access.
                             </p>
                             <div class="pro-items style-2">
                                 <div class="progress">
@@ -535,10 +592,10 @@
                                 </div>
                             </div>
                             <ul class="donate-list">
-                                <li>Raised : $8,000 / 15,000</li>
-                                <li>53%</li>
+                                <li>Reach: Thousands of Commuters</li>
+                                <li>High Impact</li>
                             </ul>
-                            <a href="{{ route('projects.index') }}" class="theme-btn style-2">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="{{ route('projects.index') }}" class="theme-btn style-2">Read Field Report <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -555,11 +612,12 @@
                         </div>
                         <div class="causes-content">
                             <h4>
-                                <a href="{{ route('projects.index') }}">Community Health &amp; Wellness</a>
+                                <a href="{{ route('projects.index') }}">Grassroots Digital Enablement</a>
                             </h4>
                             <p>
-                                Basic health awareness and support drives for
-                                underserved neighborhoods.
+                                Equipping cause-driven local NGOs with pro-bono web deployment,
+                                digital campaigns, and technical consulting to amplify their
+                                public trust and donor visibility.
                             </p>
                             <div class="pro-items style-3">
                                 <div class="progress">
@@ -567,10 +625,10 @@
                                 </div>
                             </div>
                             <ul class="donate-list">
-                                <li>Raised : $8,000 / 15,000</li>
-                                <li>53%</li>
+                                <li>Supported: 130+ Non-Profits</li>
+                                <li>Active Network</li>
                             </ul>
-                            <a href="{{ route('projects.index') }}" class="theme-btn style-3">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="{{ route('projects.index') }}" class="theme-btn style-3">Read Field Report <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -586,17 +644,21 @@
                     <div class="col-lg-6">
                         <div class="feature-content">
                             <div class="section-title style-2 mb-0">
-                                <span class="sub-title wow fadeInUp">Success Story</span>
+                                <span class="sub-title wow fadeInUp">Ecosystem Impact</span>
                                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                    <span>W</span>e help fellow <br> nonprofits access the funding tools training
+                                    <span>E</span>mpowering Grassroots NGOs with Tech, Talent &amp; Strategy
                                 </h2>
                             </div>
                             <p class="text wow fadeInUp" data-wow-delay=".5s">
-                                Every program we run exists because of the people who
-                                show up for it -- volunteers, donors and the communities
-                                who trust us to get it right.
+                                Avabodh Foundation operates as a bridge between socially minded
+                                institutions, dedicated corporate CSR programs, and vetted
+                                grassroots non-profits. By providing pro-bono digital
+                                infrastructure, volunteer deployment across 15+ domains, and
+                                structured project execution, we eliminate operational
+                                bottlenecks for community organizations&mdash;enabling them to
+                                focus entirely on their mission.
                             </p>
-                            <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s">Our Success Story <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s">Explore Our Impact Portfolio <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -605,16 +667,18 @@
                                 <img src="{{ asset('assets/img/home-1/feature/01.jpg') }}" alt="img" class="wow img-custom-anim-right" data-wow-duration="1.3s" data-wow-delay="0.3s">
                                 <div class="content-item">
                                     <div class="content">
-                                        <h3>Impact</h3>
+                                        <h3>NGO Alliances Built</h3>
                                     </div>
-                                    <h2>♥</h2>
+                                    <h2>130+</h2>
                                 </div>
                                 <div class="feature-box float-bob-y">
-                                    <h5>Program Volunteer</h5>
+                                    <h5>Akansha Kuthey</h5>
                                     <p>
-                                        Working with Avabodh has meant getting to see the
-                                        actual, direct impact of every donation.
+                                        &ldquo;Youth energy, when directed constructively toward social
+                                        challenges, becomes the most powerful catalyst for community
+                                        transformation.&rdquo;
                                     </p>
+                                    <span>Founder &amp; Director, Avabodh Foundation</span>
                                 </div>
                             </div>
                         </div>
@@ -637,9 +701,9 @@
         </div>
         <div class="container">
             <div class="section-title style-2 text-center">
-                <span class="sub-title wow fadeInUp">Why Choose Us</span>
+                <span class="sub-title wow fadeInUp">Our Commitment &amp; Values</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    <span>W</span>hy trust Avabodh Foundation ?
+                    <span>W</span>hy Partner with Avabodh Foundation?
                 </h2>
             </div>
             <div class="choose-us-wrapper-3">
@@ -670,10 +734,12 @@
                                 <img src="{{ asset('assets/img/home-1/icon/04.svg') }}" alt="img">
                             </div>
                             <div class="content">
-                                <h5>Impact driven initiatives</h5>
+                                <h5>100% Ethical &amp; Accountable Governance</h5>
                                 <p>
-                                    Every program is measured by the difference it makes,
-                                    not just the money it raises.
+                                    Formally incorporated under Section 8 as a non-profit company
+                                    limited by guarantee (CIN: U80900MH2021NPL352874), ensuring
+                                    strict transparency and regulatory compliance across every
+                                    collaborative project.
                                 </p>
                             </div>
                         </div>
@@ -682,10 +748,11 @@
                                 <img src="{{ asset('assets/img/home-1/icon/05.svg') }}" alt="img">
                             </div>
                             <div class="content">
-                                <h5>Global reach, local impact</h5>
+                                <h5>Verified Grassroots &amp; Academic Network</h5>
                                 <p>
-                                    We work directly with local communities so support
-                                    lands where it's actually needed.
+                                    Connected with 130+ verified NGOs and 80+ leading universities,
+                                    allowing us to deploy vetted human capital, technology, and CSR
+                                    resources directly where the community need is greatest.
                                 </p>
                             </div>
                         </div>
@@ -694,10 +761,11 @@
                                 <img src="{{ asset('assets/img/home-2/icon/04.svg') }}" alt="img">
                             </div>
                             <div class="content">
-                                <h5>Dedicated volunteers &amp; partners</h5>
+                                <h5>Dedicated Student &amp; Professional Manpower</h5>
                                 <p>
-                                    Our volunteers and partner organisations are the
-                                    backbone of everything we run.
+                                    Over 3,000 students and interns mobilized across 15+
+                                    disciplines&mdash;from field research and community health rallies
+                                    to web development and digital outreach.
                                 </p>
                             </div>
                         </div>
@@ -706,10 +774,12 @@
                                 <img src="{{ asset('assets/img/home-2/icon/01.svg') }}" alt="img">
                             </div>
                             <div class="content">
-                                <h5>Transparent, accountable giving</h5>
+                                <h5>Measurable, Ground-Level Social Action</h5>
                                 <p>
-                                    We're clear about where support goes and what it's
-                                    used for.
+                                    Every initiative is backed by clear documentation, field
+                                    audits, and transparent expenditure tracking&mdash;delivering
+                                    verifiable outcomes aligned with UN Sustainable Development
+                                    Goals.
                                 </p>
                             </div>
                         </div>
@@ -723,9 +793,9 @@
     <section class="donation-section-3 section-padding fix pb-0">
         <div class="container">
             <div class="section-title style-2">
-                <span class="sub-title wow fadeInUp">How It Works</span>
+                <span class="sub-title wow fadeInUp">How We Work</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    <span>M</span>aking an impact step by step
+                    <span>D</span>riving Measurable Change, Step by Step
                 </h2>
             </div>
             <div class="row">
@@ -742,13 +812,14 @@
                         </div>
                         <div class="donation-content">
                             <h5>
-                                <a href="donation-details.html">Choose Your Cause</a>
+                                <a href="donation-details.html">1. Identify &amp; Align</a>
                             </h5>
                             <p>
-                                Pick the program that means the most to you -- education,
-                                skills training, or community outreach.
+                                We assess pressing community needs and align corporate CSR goals
+                                with verified grassroots NGO programs and higher education
+                                institutions.
                             </p>
-                            <a href="donation-details.html" class="link-btn">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="donation-details.html" class="link-btn">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -756,13 +827,14 @@
                     <div class="donation-card-items-3">
                         <div class="donation-content style-2">
                             <h5>
-                                <a href="donation-details.html">Make A Donation</a>
+                                <a href="donation-details.html">2. Mobilize &amp; Execute</a>
                             </h5>
                             <p>
-                                Every contribution, whatever the size, goes directly
-                                toward running that program.
+                                We deploy skilled student intern cohorts, field volunteers, and
+                                strategic resources to implement on-the-ground campaigns and
+                                technology support.
                             </p>
-                            <a href="donation-details.html" class="link-btn">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="donation-details.html" class="link-btn">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                         <div class="donation-image">
                             <img src="{{ asset('assets/img/home-1/donation/02.jpg') }}" alt="img">
@@ -788,13 +860,13 @@
                         </div>
                         <div class="donation-content">
                             <h5>
-                                <a href="donation-details.html">See The Impact</a>
+                                <a href="donation-details.html">3. Measure &amp; Sustain</a>
                             </h5>
                             <p>
-                                We follow up with real updates on where your support
-                                went and what it made possible.
+                                Every initiative is audited with transparent field documentation,
+                                measurable outcomes, and ongoing community-led capacity building.
                             </p>
-                            <a href="donation-details.html" class="link-btn">More Details <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <a href="donation-details.html" class="link-btn">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -833,13 +905,13 @@
                                                     <i class="fa-solid fa-star"></i>
                                                 </div>
                                                 <p>
-                                                    Charity work doesn't just help the people
-                                                    receiving it -- it builds a real sense of
-                                                    unity and shared responsibility across the
-                                                    whole community.
+                                                    &ldquo;Youth energy, when guided away from negative
+                                                    influences and channeled toward structured social
+                                                    welfare, becomes the most powerful driver of
+                                                    societal change.&rdquo;
                                                 </p>
-                                                <h4>Program Participant</h4>
-                                                <span>Avabodh Foundation</span>
+                                                <h4>Akansha Kuthey</h4>
+                                                <span>Founder &amp; Lead Representative, Avabodh Foundation</span>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
@@ -886,14 +958,16 @@
                     <div class="col-lg-6">
                         <div class="testimonial-content">
                             <div class="section-title style-2 mb-0">
-                                <span class="sub-title wow fadeInUp">testimonials</span>
+                                <span class="sub-title wow fadeInUp">Testimonials &amp; Leadership</span>
                                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                    <span>S</span>tories from the people we work with
+                                    <span>E</span>mpowering Voices, Transforming Communities
                                 </h2>
                             </div>
                             <p class="text wow fadeInUp" data-wow-delay=".5s">
-                                From students to volunteers, these are the people whose
-                                stories remind us why this work matters.
+                                At Avabodh Foundation, we believe sustainable social development
+                                happens when youth energy meets structured community service.
+                                Through our multi-stakeholder model, colleges, corporations, and
+                                non-profits unite to build resilient futures.
                             </p>
                             <a href="{{ route('internships.index') }}" class="theme-btn wow fadeInUp" data-wow-delay=".5s">Learn More <i class="fa-solid fa-arrow-right-long"></i></a>
                             <div class="testimonial-count-box">
@@ -901,22 +975,25 @@
                                     <div class="icon">
                                         <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
                                     </div>
-                                    <h2><span class="count">569</span>+</h2>
-                                    <h6>Beneficiaries Reached</h6>
+                                    <h2><span class="count">3000</span>+</h2>
+                                    <h6>Interns Mobilized</h6>
+                                    <span style="display:block;font-size:13px;">Across 15+ functional social sectors</span>
                                 </div>
                                 <div class="box">
                                     <div class="icon">
                                         <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
                                     </div>
-                                    <h2><span class="count">12</span>+</h2>
-                                    <h6>Active Programs</h6>
+                                    <h2><span class="count">130</span>+</h2>
+                                    <h6>NGO Partners</h6>
+                                    <span style="display:block;font-size:13px;">Grassroots non-profits empowered</span>
                                 </div>
                                 <div class="box">
                                     <div class="icon">
                                         <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
                                     </div>
-                                    <h2><span class="count">25</span>+</h2>
-                                    <h6>Volunteer Partners</h6>
+                                    <h2><span class="count">80</span>+</h2>
+                                    <h6>Colleges &amp; Universities</h6>
+                                    <span style="display:block;font-size:13px;">Leading academic institutions partnered</span>
                                 </div>
                             </div>
                         </div>
@@ -936,9 +1013,9 @@
         </div>
         <div class="container">
             <div class="section-title style-2">
-                <span class="sub-title wow fadeInUp">Blog &amp; News</span>
+                <span class="sub-title wow fadeInUp">Updates &amp; Media</span>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    <span>O</span>ur Latest News &amp; Articles
+                    <span>L</span>atest Stories, Press Releases &amp; Field News
                 </h2>
             </div>
             <div class="row">
@@ -957,19 +1034,20 @@
                             <ul class="news-meta">
                                 <li>
                                     <i class="fa-regular fa-user"></i>
-                                    By: Admin
+                                    By: Press Desk
                                 </li>
                                 <li>
                                     <i class="fa-regular fa-comment"></i>
-                                    Comments
+                                    Dainik Bhaskar Feature
                                 </li>
                             </ul>
                             <h4>
                                 <a href="news-details.html">
-                                    How Your Support Changes Lives
+                                    Channeling Youth Energy into Social Action: Anti-Drug Awareness at RBI Chowk
                                 </a>
                             </h4>
-                            <a href="news-details.html" class="theme-btn">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <p>Avabodh Foundation mobilizes youth and partners with local traffic police to drive street-level narcotics awareness and community counseling.</p>
+                            <a href="news-details.html" class="theme-btn">Read Full Coverage <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -988,19 +1066,20 @@
                             <ul class="news-meta">
                                 <li>
                                     <i class="fa-regular fa-user"></i>
-                                    By: Admin
+                                    By: Field Operations
                                 </li>
                                 <li>
                                     <i class="fa-regular fa-comment"></i>
-                                    Comments
+                                    Impact Report
                                 </li>
                             </ul>
                             <h4>
                                 <a href="news-details.html">
-                                    Behind Our Latest Community Outreach
+                                    Empowering 300 NMC School Students with Comprehensive Learning Kits
                                 </a>
                             </h4>
-                            <a href="news-details.html" class="theme-btn">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <p>Eliminating out-of-pocket learning costs by distributing durable school bags and academic supplies to primary and secondary students across Nagpur.</p>
+                            <a href="news-details.html" class="theme-btn">Read Impact Story <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1019,19 +1098,20 @@
                             <ul class="news-meta">
                                 <li>
                                     <i class="fa-regular fa-user"></i>
-                                    By: Admin
+                                    By: Academic Relations
                                 </li>
                                 <li>
                                     <i class="fa-regular fa-comment"></i>
-                                    Comments
+                                    Uprajdhani Feature
                                 </li>
                             </ul>
                             <h4>
                                 <a href="news-details.html">
-                                    5 Ways To Get Involved This Month
+                                    Bridging Classrooms with Grassroots Action: Over 3,000 Interns Mobilized
                                 </a>
                             </h4>
-                            <a href="news-details.html" class="theme-btn">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+                            <p>Collaborating with 80+ universities to provide practical field and technical experience across 15+ community welfare domains.</p>
+                            <a href="news-details.html" class="theme-btn">Explore Programs <i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1057,12 +1137,12 @@
                         <div class="volounteer-content">
                             <div class="section-title mb-0 style-2">
                                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                    <span>V</span>olunteer with us <br> and be part of the <br> solution
+                                    <span>J</span>oin Us in Action: <br> Empower Youth &amp; <br> Transform Communities
                                 </h2>
                             </div>
                             <div class="volounteer-button wow fadeInUp" data-wow-delay=".5s">
-                                <a href="{{ route('internships.index') }}" class="theme-btn">Get Involved <i class="fa-solid fa-arrow-right-long"></i></a>
-                                <a href="donation-details.html" class="theme-btn style-2">Donate Now <i class="fa-solid fa-arrow-right-long"></i></a>
+                                <a href="{{ route('internships.index') }}" class="theme-btn">Apply for Internship <i class="fa-solid fa-arrow-right-long"></i></a>
+                                <a href="{{ route('contact') }}" class="theme-btn style-2">Partner as Corporate / NGO <i class="fa-solid fa-arrow-right-long"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1075,6 +1155,21 @@
             </div>
         </div>
     </section>
+
+    @push('styles')
+        <style>
+            /* Font Awesome icons inside the About boxes' 50px green circles
+               (replacing the template's generic demo SVGs). */
+            .about-wrapper-3 .about-content .about-box .icon {
+                flex: 0 0 50px;
+            }
+            .about-wrapper-3 .about-content .about-box .icon i {
+                color: #fff;
+                font-size: 20px;
+                line-height: 50px;
+            }
+        </style>
+    @endpush
 
     @push('scripts')
         <script>

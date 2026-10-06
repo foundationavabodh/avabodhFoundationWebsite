@@ -125,7 +125,7 @@
                                         <img src="{{ $footerLogoUrl }}" alt="{{ $websiteSettings->site_name ?: 'Avbodh Foundation' }}" style="max-height: 48px;">
                                     </a>
                                 </div>
-                                <p class="mb-4" style="color: #ffffff; text-align: justify;">
+                                <p class="mb-4" style="color: #ffffff; text-align: left;">
                                     Avabodh Foundation is a youth-driven, non-profit organization
                                     dedicated to paving 'Steps Towards A Better World'. We connect
                                     resources, students, and corporates for sustainable community
@@ -156,37 +156,17 @@
                                 <div class="wid-title">
                                     <h3>Quick Links</h3>
                                 </div>
+                                {{-- Same database-driven main menu that powers the header navigation
+                                     (top-level items only), so Quick Links always mirrors it. --}}
                                 <ul class="list-area">
-                                    <li>
-                                        <a href="about.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            About US
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                           Contact
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Gallery
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="faq.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            FAQ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="news-details.html">
-                                            <i class="fa-solid fa-angles-right"></i>
-                                            Blog
-                                        </a>
-                                    </li>
+                                    @foreach (\App\Models\MenuItem::tree() as $footerMenuItem)
+                                        <li>
+                                            <a href="{{ $footerMenuItem->resolved_url }}"@if ($footerMenuItem->open_in_new_tab) target="_blank" rel="noopener"@endif>
+                                                <i class="fa-solid fa-angles-right"></i>
+                                                {{ $footerMenuItem->label }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

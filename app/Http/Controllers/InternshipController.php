@@ -7,16 +7,35 @@ use App\Http\Requests\StoreInternshipApplicationRequest;
 use App\Models\Internship;
 use App\Models\InternshipApplication;
 use App\Models\InternshipDomain;
-use App\Models\InternshipEmailVerification;
-use App\Notifications\InternshipEmailVerificationCode;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Validator;
 
 class InternshipController extends Controller
 {
+    /**
+     * Options for the application form's "College Name" <select>. A fixed local
+     * list (matching the ones avabodhfoundation.org/internships itself offers)
+     * plus "Other", which reveals a free-text field (college_name_other) for any
+     * college not on this list -- see the apply form and store() below.
+     *
+     * @var array<int, string>
+     */
+    private const COLLEGE_OPTIONS = [
+        'S. B. Jain Institute of Technology, Management and Research',
+        'Tata Institute of Social Sciences',
+        'Symbiosis Institute of Technology, Nagpur',
+        'Symbiosis Centre for Management Studies, Nagpur',
+        'Symbiosis Institute of Technology, Pune',
+        'D. Y. Patil International University, Pune',
+        'Ramdeobaba University',
+        'SRM Institute of Science and Technology',
+        'G. S. College of Commerce & Economics, Nagpur',
+        "Maharshi Karve Stree Shikshan Samstha's Cummins College of Engineering for Women, Nagpur",
+        'G. H. Raisoni College of Engineering, Nagpur',
+        'Dr. Ambedkar Institute of Management Studies and Research',
+        'Priyadarshini College of Engineering, Nagpur',
+        'Yeshwantrao Chavan College of Engineering',
+    ];
+
     /**
      * Public /internships page: hero, open positions (published internships only),
      * and the apply form. All three sections live on this one page/view, matching
@@ -39,88 +58,23 @@ class InternshipController extends Controller
         return view('pages.internships.index', [
             'internships' => $internships,
             'domains' => $domains,
+            'collegeOptions' => self::COLLEGE_OPTIONS,
         ]);
     }
 
     /**
-     * Step 1 of email verification (Part 3): issue and mail a 6-digit code for the
-     * given email. Always responds success for a syntactically valid email address,
-     * whether or not that address has applied before, so this can't be used to
-     * enumerate past applicants.
-     */
-    public function sendVerificationCode(Request $request): JsonResponse
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email', 'max:255'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Please enter a valid email address.'], 422);
-        }
-
-        $email = $request->string('email')->toString();
-
-        [, $code] = InternshipEmailVerification::issueFor($email);
-
-        try {
-            Notification::route('mail', $email)->notify(new InternshipEmailVerificationCode($code));
-        } catch (\Throwable $e) {
-            report($e);
-
-            return response()->json([
-                'message' => 'We couldn\'t send a verification email right now. Please try again shortly.',
-            ], 500);
-        }
-
-        return response()->json([
-            'message' => 'A verification code has been sent to your email.',
-        ]);
-    }
-
-    /**
-     * Step 2 of email verification: check the code the applicant entered. On
-     * success, InternshipEmailVerification::attempt() marks it verified; the
-     * actual application submission re-checks this server-side (see
-     * StoreInternshipApplicationRequest), so this endpoint is a UX convenience,
-     * not the security boundary itself.
-     */
-    public function confirmVerificationCode(Request $request): JsonResponse
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'code' => ['required', 'string'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['verified' => false, 'message' => 'Please enter the code sent to your email.'], 422);
-        }
-
-        $verified = InternshipEmailVerification::attempt(
-            $request->string('email')->toString(),
-            $request->string('code')->toString(),
-        );
-
-        if (! $verified) {
-            return response()->json([
-                'verified' => false,
-                'message' => 'That code is incorrect or has expired. Please request a new one.',
-            ], 422);
-        }
-
-        return response()->json([
-            'verified' => true,
-            'message' => 'Email verified.',
-        ]);
-    }
-
-    /**
-     * Final application submission. Only reachable once StoreInternshipApplicationRequest's
-     * validation (including the "email was recently verified" and "internship is
-     * published" checks) passes.
+     * Final application submission. Only reachable once
+     * StoreInternshipApplicationRequest's validation (including the "internship is
+     * published" and "no duplicate application for this internship/email" checks)
+     * passes.
      */
     public function store(StoreInternshipApplicationRequest $request): RedirectResponse
     {
-        $verification = InternshipEmailVerification::recentlyVerified($request->validated('email'));
+        // "Other" is never itself the stored college name -- when chosen, the
+        // applicant's own free-text entry (college_name_other) is what's saved.
+        $collegeName = $request->validated('college_name') === 'Other'
+            ? $request->validated('college_name_other')
+            : $request->validated('college_name');
 
         $application = InternshipApplication::create([
             ...$request->safe()->only([
@@ -129,11 +83,10 @@ class InternshipController extends Controller
                 'email',
                 'phone',
                 'preferred_domain_id',
-                'college_name',
                 'address',
                 'skills',
             ]),
-            'email_verified_at' => $verification?->verified_at ?? now(),
+            'college_name' => $collegeName,
             'submitted_at' => now(),
         ]);
 

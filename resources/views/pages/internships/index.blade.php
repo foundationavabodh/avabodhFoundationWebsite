@@ -161,8 +161,7 @@
                         <div class="from-box">
                             <h3>Application Form</h3>
                             <p>
-                                Fields marked <span class="text-danger">*</span> are required. Your email must be
-                                verified before the application can be submitted.
+                                Fields marked <span class="text-danger">*</span> are required.
                             </p>
 
                             @if ($errors->any())
@@ -182,48 +181,71 @@
                                 <div class="row g-4 mb-4">
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="full_name" id="full_name" placeholder="Full Name *" required value="{{ old('full_name') }}" autocomplete="name">
+                                            <input type="text" name="full_name" id="full_name" placeholder="Full Name *"
+                                                   value="{{ old('full_name') }}" required minlength="2" maxlength="255"
+                                                   pattern="[A-Za-z\s.'\-]{2,255}" title="Please enter a valid name (letters, spaces, apostrophes, periods and hyphens only)"
+                                                   autocomplete="name" class="@error('full_name') is-invalid @enderror">
+                                            @error('full_name')
+                                                <div class="text-danger small mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="email" name="email" id="email" placeholder="Email Address *" required value="{{ old('email') }}" autocomplete="email">
+                                            <input type="email" name="email" id="email" placeholder="Email Address *"
+                                                   value="{{ old('email') }}" required maxlength="255"
+                                                   autocomplete="email" class="@error('email') is-invalid @enderror">
+                                            @error('email')
+                                                <div class="text-danger small mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="verify-email-box mb-4">
-                                    <div class="d-flex flex-wrap align-items-center gap-2">
-                                        <button type="button" id="send-code-btn" class="theme-btn style-3">
-                                            Verify Email
-                                        </button>
-                                        <span id="verify-status" class="small"></span>
-                                    </div>
-
-                                    <div id="code-entry" class="d-none mt-3">
-                                        <div class="d-flex flex-wrap align-items-center gap-2">
-                                            <input type="text" id="verification_code" placeholder="Enter 6-digit code" inputmode="numeric" maxlength="6" style="max-width: 220px;" class="form-control">
-                                            <button type="button" id="confirm-code-btn" class="theme-btn style-3">
-                                                Confirm Code
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <input type="hidden" name="email_verified" id="email_verified" value="0">
-                                </div>
 
                                 <span class="form-section-label">Contact &amp; Background</span>
                                 <div class="row g-4 mb-4">
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="phone" id="phone" placeholder="Contact Number" value="{{ old('phone') }}" autocomplete="tel">
+                                            <input type="tel" name="phone" id="phone" placeholder="Contact Number *"
+                                                   value="{{ old('phone') }}" required inputmode="numeric" autocomplete="tel"
+                                                   minlength="10" maxlength="10" pattern="[0-9]{10}" title="Enter a valid 10-digit contact number"
+                                                   class="@error('phone') is-invalid @enderror">
+                                            @error('phone')
+                                                <div class="text-danger small mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
+                                        {{-- A fixed list of local colleges (matching what avabodhfoundation.org's own
+                                             form offers) plus "Other", which reveals the free-text field below --}}
+                                        <select name="college_name" id="college_name" class="single-select @error('college_name') is-invalid @enderror">
+                                            <option value="">Select your College *</option>
+                                            @foreach ($collegeOptions as $college)
+                                                <option value="{{ $college }}" @selected(old('college_name') == $college)>{{ $college }}</option>
+                                            @endforeach
+                                            <option value="Other" @selected(old('college_name') == 'Other')>Other</option>
+                                        </select>
+                                        {{-- Same niceSelect caveat as #internship_id below: the underlying <select>
+                                             is hidden, so native "required" can't be trusted -- validated in JS instead. --}}
+                                        <div id="college-select-error" class="text-danger small mt-2 d-none">
+                                            Please select your college.
+                                        </div>
+                                        @error('college_name')
+                                            <div class="text-danger small mt-2">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-lg-6 {{ old('college_name') === 'Other' ? '' : 'd-none' }}" id="college-other-wrapper">
                                         <div class="form-clt">
-                                            <input type="text" name="college_name" id="college_name" placeholder="College / Institution Name" value="{{ old('college_name') }}" autocomplete="organization">
+                                            <input type="text" name="college_name_other" id="college_name_other" placeholder="Enter your college name *"
+                                                   value="{{ old('college_name_other') }}" maxlength="255"
+                                                   class="@error('college_name_other') is-invalid @enderror">
+                                            @error('college_name_other')
+                                                <div class="text-danger small mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -237,7 +259,7 @@
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <select name="internship_id" id="internship_id" class="single-select">
+                                        <select name="internship_id" id="internship_id" class="single-select @error('internship_id') is-invalid @enderror">
                                             <option value="">Select Internship *</option>
                                             @foreach ($internships as $internship)
                                                 <option value="{{ $internship->id }}" @selected(old('internship_id') == $internship->id)>
@@ -252,22 +274,29 @@
                                         <div id="internship-select-error" class="text-danger small mt-2 d-none">
                                             Please select an internship.
                                         </div>
+                                        @error('internship_id')
+                                            <div class="text-danger small mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <textarea name="address" id="address" placeholder="Address">{{ old('address') }}</textarea>
+                                            <textarea name="address" id="address" placeholder="Address *" required minlength="10" maxlength="2000"
+                                                      class="@error('address') is-invalid @enderror">{{ old('address') }}</textarea>
+                                            @error('address')
+                                                <div class="text-danger small mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <textarea name="skills" id="skills" placeholder="Relevant Skills">{{ old('skills') }}</textarea>
+                                            <textarea name="skills" id="skills" placeholder="Relevant Skills (optional)" maxlength="2000">{{ old('skills') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" id="submit-application-btn" class="theme-btn apply-submit-btn" disabled>
+                                <button type="submit" id="submit-application-btn" class="theme-btn apply-submit-btn">
                                     Submit Application <i class="fa-solid fa-arrow-right-long"></i>
                                 </button>
                             </form>
@@ -281,113 +310,34 @@
 
 @endsection
 
+@push('styles')
+    <style>
+        .from-box .form-clt input.is-invalid,
+        .from-box .form-clt textarea.is-invalid {
+            border-color: #dc3545 !important;
+        }
+
+        /* niceSelect (jquery.nice-select.min.js) copies the underlying
+           select element's class onto its own wrapper div at init time, so
+           an is-invalid class added server-side lands here too. The JS
+           below also toggles this class live for client-side checks. */
+        .from-box .nice-select.is-invalid {
+            border-color: #dc3545 !important;
+        }
+
+    </style>
+@endpush
+
 @push('scripts')
     <script>
         (function () {
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-            const emailInput = document.getElementById('email');
-            const sendCodeBtn = document.getElementById('send-code-btn');
-            const codeEntry = document.getElementById('code-entry');
-            const codeInput = document.getElementById('verification_code');
-            const confirmCodeBtn = document.getElementById('confirm-code-btn');
-            const verifyStatus = document.getElementById('verify-status');
-            const emailVerifiedField = document.getElementById('email_verified');
-            const submitBtn = document.getElementById('submit-application-btn');
             const internshipSelect = document.getElementById('internship_id');
             const applicationForm = document.getElementById('internship-application-form');
             const internshipSelectError = document.getElementById('internship-select-error');
-
-            function setStatus(message, className) {
-                verifyStatus.textContent = message;
-                verifyStatus.className = 'small ' + (className || '');
-            }
-
-            function resetVerification() {
-                emailVerifiedField.value = '0';
-                submitBtn.disabled = true;
-                codeEntry.classList.add('d-none');
-                setStatus('', '');
-            }
-
-            // Changing the email after verifying invalidates that verification --
-            // the server re-checks against whatever email is actually submitted, so
-            // the UI must not let a stale "verified" state linger on a new address.
-            emailInput.addEventListener('input', resetVerification);
-
-            sendCodeBtn.addEventListener('click', function () {
-                const email = emailInput.value.trim();
-                if (!email) {
-                    setStatus('Please enter your email first.', 'text-danger');
-                    return;
-                }
-
-                sendCodeBtn.disabled = true;
-                setStatus('Sending code...', 'text-muted');
-
-                fetch('{{ route('internships.verify-email.send') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email }),
-                })
-                    .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-                    .then(function (result) {
-                        if (result.ok) {
-                            codeEntry.classList.remove('d-none');
-                            setStatus(result.data.message, 'text-success');
-                        } else {
-                            setStatus(result.data.message || 'Could not send code.', 'text-danger');
-                        }
-                    })
-                    .catch(function () {
-                        setStatus('Something went wrong. Please try again.', 'text-danger');
-                    })
-                    .finally(function () {
-                        sendCodeBtn.disabled = false;
-                    });
-            });
-
-            confirmCodeBtn.addEventListener('click', function () {
-                const email = emailInput.value.trim();
-                const code = codeInput.value.trim();
-                if (!code) {
-                    setStatus('Please enter the code.', 'text-danger');
-                    return;
-                }
-
-                confirmCodeBtn.disabled = true;
-
-                fetch('{{ route('internships.verify-email.confirm') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email, code: code }),
-                })
-                    .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-                    .then(function (result) {
-                        if (result.ok && result.data.verified) {
-                            emailVerifiedField.value = '1';
-                            submitBtn.disabled = false;
-                            setStatus('Email verified.', 'text-success');
-                        } else {
-                            emailVerifiedField.value = '0';
-                            submitBtn.disabled = true;
-                            setStatus(result.data.message || 'Incorrect code.', 'text-danger');
-                        }
-                    })
-                    .catch(function () {
-                        setStatus('Something went wrong. Please try again.', 'text-danger');
-                    })
-                    .finally(function () {
-                        confirmCodeBtn.disabled = false;
-                    });
-            });
+            const collegeSelect = document.getElementById('college_name');
+            const collegeSelectError = document.getElementById('college-select-error');
+            const collegeOtherWrapper = document.getElementById('college-other-wrapper');
+            const collegeOtherInput = document.getElementById('college_name_other');
 
             // "Apply Now" on an Open Positions card pre-selects that internship and
             // jumps to the form, instead of the applicant having to find it again
@@ -407,25 +357,106 @@
             // it can't be trusted (it fails silently in Safari in particular).
             // Validate explicitly here instead, so a missing selection always shows
             // a clear, visible message rather than the form just doing nothing.
+            // Same "Other" pattern as a typical college/occupation picker: showing the
+            // free-text field only once it's actually needed, instead of always
+            // showing an "Other" box nobody uses.
+            function updateCollegeOtherVisibility() {
+                if (collegeSelect.value === 'Other') {
+                    collegeOtherWrapper.classList.remove('d-none');
+                    collegeOtherInput.setAttribute('required', 'required');
+                } else {
+                    collegeOtherWrapper.classList.add('d-none');
+                    collegeOtherInput.removeAttribute('required');
+                    collegeOtherInput.value = '';
+                }
+            }
+
+            updateCollegeOtherVisibility();
+
+            function handleCollegeChange() {
+                updateCollegeOtherVisibility();
+                if (collegeSelect.value) {
+                    collegeSelectError.classList.add('d-none');
+                }
+            }
+
+            // niceSelect (jquery.nice-select.min.js) only ever calls jQuery's
+            // .trigger("change") on the real <select> when an option is clicked --
+            // never a native DOM "change" event -- so a plain addEventListener here
+            // would silently never fire for an actual user click on the dropdown
+            // (only for changes made programmatically via plain JS elsewhere, like
+            // the "Apply Now" card buttons below). Binding through jQuery catches
+            // both; a native listener is added too as a harmless fallback.
+            if (window.jQuery) {
+                jQuery(collegeSelect).on('change', handleCollegeChange);
+            }
+            collegeSelect.addEventListener('change', handleCollegeChange);
+
             applicationForm.addEventListener('submit', function (e) {
+                const internshipWidget = internshipSelect.nextElementSibling;
+                const collegeWidget = collegeSelect.nextElementSibling;
+
                 if (!internshipSelect.value) {
                     e.preventDefault();
                     internshipSelectError.classList.remove('d-none');
-                    const niceSelectWidget = internshipSelect.nextElementSibling;
-                    if (niceSelectWidget && niceSelectWidget.classList.contains('nice-select')) {
-                        niceSelectWidget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (internshipWidget && internshipWidget.classList.contains('nice-select')) {
+                        internshipWidget.classList.add('is-invalid');
+                        internshipWidget.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                     return false;
                 }
 
                 internshipSelectError.classList.add('d-none');
+                if (internshipWidget) {
+                    internshipWidget.classList.remove('is-invalid');
+                }
+
+                // college_name's <select> is also niceSelect-hidden, so it gets the
+                // same explicit-JS-validation treatment as #internship_id above.
+                if (!collegeSelect.value) {
+                    e.preventDefault();
+                    collegeSelectError.classList.remove('d-none');
+                    if (collegeWidget && collegeWidget.classList.contains('nice-select')) {
+                        collegeWidget.classList.add('is-invalid');
+                        collegeWidget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return false;
+                }
+
+                collegeSelectError.classList.add('d-none');
+                if (collegeWidget) {
+                    collegeWidget.classList.remove('is-invalid');
+                }
+
+                if (collegeSelect.value === 'Other' && !collegeOtherInput.value.trim()) {
+                    e.preventDefault();
+                    collegeOtherInput.classList.add('is-invalid');
+                    collegeOtherInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    collegeOtherInput.focus();
+                    return false;
+                }
+
+                collegeOtherInput.classList.remove('is-invalid');
             });
 
-            internshipSelect.addEventListener('change', function () {
+            function handleInternshipChange() {
                 if (internshipSelect.value) {
                     internshipSelectError.classList.add('d-none');
+                    const widget = internshipSelect.nextElementSibling;
+                    if (widget && widget.classList.contains('nice-select')) {
+                        widget.classList.remove('is-invalid');
+                    }
                 }
-            });
+            }
+
+            // Same niceSelect caveat as college_name above: a real click on the
+            // dropdown only ever fires jQuery's own trigger("change"), never a
+            // native DOM event, so bind through jQuery too (not just a plain
+            // addEventListener) or this silently never runs for a real user click.
+            if (window.jQuery) {
+                jQuery(internshipSelect).on('change', handleInternshipChange);
+            }
+            internshipSelect.addEventListener('change', handleInternshipChange);
         })();
     </script>
 @endpush

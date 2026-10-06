@@ -48,18 +48,6 @@ Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name
 Route::prefix('internships')->name('internships.')->group(function () {
     Route::get('/', [InternshipController::class, 'index'])->name('index');
 
-    // Small AJAX endpoints behind the "Apply for Internship" form's email
-    // verification step (Part 3) -- issuing/checking a code, not the application
-    // itself, which is a normal POST below. Throttled (Laravel's built-in limiter,
-    // no new package) so the code-sending endpoint in particular can't be used to
-    // spam arbitrary inboxes.
-    Route::post('/verify-email/send', [InternshipController::class, 'sendVerificationCode'])
-        ->name('verify-email.send')
-        ->middleware('throttle:5,1');
-    Route::post('/verify-email/confirm', [InternshipController::class, 'confirmVerificationCode'])
-        ->name('verify-email.confirm')
-        ->middleware('throttle:10,1');
-
     Route::post('/apply', [InternshipController::class, 'store'])
         ->name('apply')
         ->middleware('throttle:10,1');
