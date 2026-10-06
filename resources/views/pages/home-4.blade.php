@@ -391,7 +391,7 @@
                         <div class="service-card-items-3">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-2/icon/01.svg') }}" alt="img">
+                                    <i class="fa-solid fa-handshake"></i>
                                 </div>
                                 <div class="content">
                                     <h4>01</h4>
@@ -417,7 +417,7 @@
                         <div class="service-card-items-3 accent-secondary">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
+                                    <i class="fa-solid fa-laptop-code"></i>
                                 </div>
                                 <div class="content">
                                     <h4>02</h4>
@@ -443,7 +443,7 @@
                         <div class="service-card-items-3 accent-highlight">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-1/icon/01.svg') }}" alt="img">
+                                    <i class="fa-solid fa-book-open-reader"></i>
                                 </div>
                                 <div class="content">
                                     <h4>03</h4>
@@ -469,7 +469,7 @@
                         <div class="service-card-items-3">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-1/icon/03.svg') }}" alt="img">
+                                    <i class="fa-solid fa-heart-pulse"></i>
                                 </div>
                                 <div class="content">
                                     <h4>04</h4>
@@ -495,7 +495,7 @@
                         <div class="service-card-items-3 accent-secondary">
                             <div class="service-content">
                                 <div class="icon">
-                                    <img src="{{ asset('assets/img/home-2/icon/03.svg') }}" alt="img">
+                                    <i class="fa-solid fa-user-graduate"></i>
                                 </div>
                                 <div class="content">
                                     <h4>05</h4>
@@ -731,7 +731,7 @@
                     <div class="col-lg-6">
                         <div class="choose-us-box wow fadeInUp" data-wow-delay=".3s">
                             <div class="icon">
-                                <img src="{{ asset('assets/img/home-1/icon/04.svg') }}" alt="img">
+                                <i class="fa-solid fa-scale-balanced"></i>
                             </div>
                             <div class="content">
                                 <h5>100% Ethical &amp; Accountable Governance</h5>
@@ -745,7 +745,7 @@
                         </div>
                         <div class="choose-us-box active-box wow fadeInUp" data-wow-delay=".5s">
                             <div class="icon">
-                                <img src="{{ asset('assets/img/home-1/icon/05.svg') }}" alt="img">
+                                <i class="fa-solid fa-network-wired"></i>
                             </div>
                             <div class="content">
                                 <h5>Verified Grassroots &amp; Academic Network</h5>
@@ -758,7 +758,7 @@
                         </div>
                         <div class="choose-us-box wow fadeInUp" data-wow-delay=".3s">
                             <div class="icon">
-                                <img src="{{ asset('assets/img/home-2/icon/04.svg') }}" alt="img">
+                                <i class="fa-solid fa-users"></i>
                             </div>
                             <div class="content">
                                 <h5>Dedicated Student &amp; Professional Manpower</h5>
@@ -771,7 +771,7 @@
                         </div>
                         <div class="choose-us-box mb-0 wow fadeInUp" data-wow-delay=".5s">
                             <div class="icon">
-                                <img src="{{ asset('assets/img/home-2/icon/01.svg') }}" alt="img">
+                                <i class="fa-solid fa-chart-line"></i>
                             </div>
                             <div class="content">
                                 <h5>Measurable, Ground-Level Social Action</h5>
@@ -973,7 +973,7 @@
                             <div class="testimonial-count-box">
                                 <div class="box">
                                     <div class="icon">
-                                        <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
+                                        <i class="fa-solid fa-user-graduate"></i>
                                     </div>
                                     <h2><span class="count">3000</span>+</h2>
                                     <h6>Interns Mobilized</h6>
@@ -981,7 +981,7 @@
                                 </div>
                                 <div class="box">
                                     <div class="icon">
-                                        <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
+                                        <i class="fa-solid fa-hand-holding-heart"></i>
                                     </div>
                                     <h2><span class="count">130</span>+</h2>
                                     <h6>NGO Partners</h6>
@@ -989,7 +989,7 @@
                                 </div>
                                 <div class="box">
                                     <div class="icon">
-                                        <img src="{{ asset('assets/img/home-1/icon/02.svg') }}" alt="img">
+                                        <i class="fa-solid fa-building-columns"></i>
                                     </div>
                                     <h2><span class="count">80</span>+</h2>
                                     <h6>Colleges &amp; Universities</h6>
@@ -1167,6 +1167,35 @@
                 color: #fff;
                 font-size: 20px;
                 line-height: 50px;
+            }
+
+            /* Same treatment for the Font Awesome icons that replaced the template's
+               SVG images in the service cards, Our Commitment boxes and the counters. */
+            .service-card-items-3 .service-content .icon i {
+                color: #fff;
+                font-size: 28px;
+                transition: all 0.4s ease-in-out;
+            }
+            .service-card-items-3:hover .service-content .icon i {
+                color: var(--theme-2);
+                transform: scaleX(-1);
+            }
+            /* The lime accent card's badge is too light for a white icon. */
+            .service-card-items-3.accent-highlight .service-content .icon i {
+                color: var(--theme-2);
+            }
+            .choose-us-wrapper-3 .choose-us-box .icon i {
+                color: var(--theme-2);
+                font-size: 28px;
+                transition: all 0.4s ease-in-out;
+            }
+            .choose-us-wrapper-3 .choose-us-box:hover .icon i {
+                color: #fff;
+                transform: scaleX(-1);
+            }
+            .testimonial-wrapper-3 .testimonial-content .testimonial-count-box .box .icon i {
+                color: var(--theme-2);
+                font-size: 20px;
             }
         </style>
     @endpush

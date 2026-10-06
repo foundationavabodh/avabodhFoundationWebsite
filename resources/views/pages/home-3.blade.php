@@ -785,7 +785,7 @@
                                                 3.00pm - 4.00pm
                                             </li>
                                             <li>
-                                                <i class="fa-regular fa-location-dot"></i>
+                                                <i class="fa-solid fa-location-dot"></i>
                                                 London park
                                             </li>
                                         </ul>
@@ -806,7 +806,7 @@
                                                 3.00pm - 4.00pm
                                             </li>
                                             <li>
-                                                <i class="fa-regular fa-location-dot"></i>
+                                                <i class="fa-solid fa-location-dot"></i>
                                                 London park
                                             </li>
                                         </ul>
@@ -827,7 +827,7 @@
                                                 3.00pm - 4.00pm
                                             </li>
                                             <li>
-                                                <i class="fa-regular fa-location-dot"></i>
+                                                <i class="fa-solid fa-location-dot"></i>
                                                 London park
                                             </li>
                                         </ul>
@@ -848,7 +848,7 @@
                                                 3.00pm - 4.00pm
                                             </li>
                                             <li>
-                                                <i class="fa-regular fa-location-dot"></i>
+                                                <i class="fa-solid fa-location-dot"></i>
                                                 London park
                                             </li>
                                         </ul>
@@ -1078,7 +1078,7 @@
                 <div class="cta-contact-wrapper wow fadeInUp" data-wow-delay=".3s">
                     <div class="contact-item">
                         <div class="icon">
-                            <i class="fa-regular fa-location-dot"></i>
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
                          <div class="content">
                             <h4>Network City, USA</h4>

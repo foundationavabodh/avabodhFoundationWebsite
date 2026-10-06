@@ -27,5 +27,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Kindi site running at http://localhost:${PORT}`);
+  console.log(`Avabodh Foundation site running at http://localhost:${PORT}`);
 });

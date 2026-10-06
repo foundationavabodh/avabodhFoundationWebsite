@@ -20,7 +20,7 @@
                     <div class="header-left">
                         <ul class="list-icon">
                             <li>
-                                <i class="fa-regular fa-location-dot"></i>
+                                <i class="fa-solid fa-location-dot"></i>
                                 {{ $settings->header_address ?: 'Network City, USA' }}
                             </li>
                             <li>

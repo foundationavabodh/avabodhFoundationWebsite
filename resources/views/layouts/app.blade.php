@@ -21,7 +21,9 @@
         <!-- ======== Page title ============ -->
         <title>{{ $websiteSettings->site_name ?: 'Avbodh Foundation' }}</title>
         <!--<< Favcion >>-->
-        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
+        <link rel="icon" href="{{ asset('assets/img/favicon/favicon.ico') }}?v=2" sizes="any">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/favicon-32.png') }}?v=2">
+        <link rel="apple-touch-icon" href="{{ asset('assets/img/favicon/apple-touch-icon.png') }}?v=2">
         <!--<< Bootstrap min.css >>-->
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <!--<< All Min Css >>-->
@@ -38,6 +40,40 @@
         <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
         <!--<< Main.css >>-->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <style>
+            /* Globe logo inside the page-loading ring. */
+            .preloader .preloader-globe-wrap {
+                position: relative;
+                width: 9em;
+                height: 9em;
+                margin: 0 auto 3.5em auto;
+            }
+            .preloader .preloader-globe-wrap .spinner {
+                position: absolute;
+                inset: 0;
+                margin: 0;
+            }
+            .preloader .preloader-globe-wrap .preloader-globe {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 64%;
+                height: auto;
+                transform: translate(-50%, -50%);
+                animation: preloader-globe-pulse 1.6s ease-in-out infinite;
+            }
+            @media (max-width: 767px) {
+                .preloader .preloader-globe-wrap {
+                    width: 7.5em;
+                    height: 7.5em;
+                    margin: 0 auto 1.5em auto;
+                }
+            }
+            @keyframes preloader-globe-pulse {
+                0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                50% { transform: translate(-50%, -50%) scale(1.08); }
+            }
+        </style>
         @stack('styles')
 </head>
 <body>
@@ -45,7 +81,9 @@
         <!-- Preloader Start -->
         <div id="preloader" class="preloader">
             <div class="animation-preloader">
-                <div class="spinner">
+                <div class="preloader-globe-wrap">
+                    <div class="spinner"></div>
+                    <img src="{{ asset('assets/img/favicon/preloader-globe.png') }}?v=2" alt="Avabodh Foundation" class="preloader-globe">
                 </div>
                 <div class="txt-loading">
                     <span data-text-preloader="A" class="letters-loading">
@@ -183,7 +221,7 @@
                                 </div>
                                 <ul class="list-area">
                                     <li style="color: var(--white);">
-                                        <i class="fa-regular fa-location-dot" style="color: var(--theme); margin-right: 5px;"></i>
+                                        <i class="fa-solid fa-location-dot" style="color: var(--theme); margin-right: 5px;"></i>
                                         Plot No. 81, Mahakali Nagar, Besa, Nagpur, Maharashtra, 440034
                                     </li>
                                     <li>
